@@ -1,0 +1,92 @@
+#bodyWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ====== Header ====== */
+#header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  /* challenge to the left, timeclock to the right */
+}
+
+#challenge {
+  grid-column: 1;
+  grid-row: 1;
+}
+#timeClock {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  grid-column: 3 / 5;
+  grid-row: 1;
+}
+#progressBar {
+  grid-column: 1 / 5;
+  grid-row: 2;
+  text-align: center;
+}
+
+
+/* ====== User Goals ====== */
+#userGoals {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  margin: 20px 0px;
+  /* minigoal center, edit button to the right */
+}
+#edit {
+  position: absolute;
+  right: 5px;
+}
+
+
+/* ====== Sharing to SNS ====== */
+#sharingToSNS {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.buttonToSharingPage {
+  margin: 0px 5px;
+
+  width: 150px;
+  height: 30px;
+}
+
+/* ====== Cheerings ====== */
+#cheerings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 20px 0px;
+  padding: 5px;
+  border: 1px dotted black;
+  overflow-y: scroll;
+  /* 나중에는 1,2,3,.. 페이지로 하자 */
+}
+
+#cheeringTitle {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+
+  margin: 7px 0px;
+
+}
+.cheeringMessage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* ====== Soft Failure ====== */
+#softFailure {
+  text-align: center;
+}

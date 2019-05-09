@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Promiss: Cut-off your dependency!</title>
+  <link rel="stylesheet" href="../static/lib/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/user_home_page_css.css">
+</head>
+<body>
+  <div id="bodyWrapper">
+
+    <div id="header">
+      <div id="challenge">
+        {{ User1234 }}'s Challenge
+      </div>
+      <div id="timeClock">
+        <div id="timeLeft">
+          {{ 3 }} Days {{ 12:3:24 }} Left&nbsp
+        </div>
+        <div id="timeEnd">
+          / May 21th, 2019 18:00
+        </div>
+      </div>
+      <div id="progressBar">
+        -----------------------------------------------------------------
+      </div>
+    </div>
+
+    <div id="userGoals">
+      <div id="miniGoals">
+        <Carousel>{{ goal1 }}</Carousel>
+      </div>
+      <button id="edit">edit</button>
+    </div>
+
+    <div id="sharingToSNS">
+      <div id="poking">
+        <button class="buttonToSharingPage" id="buttonToPokingPage"> {{ poking_thumbnail }} </button>
+      </div>
+      <div id="betting">
+        <button class="buttonToSharingPage" id="buttonToBettingPage"> {{ betting_thumbnail }} </button>
+      </div>
+      <div id="poster">
+        <button class="buttonToSharingPage" id="buttonToPosterPage"> {{ poster_thumbnail }} </button>
+      </div>
+    </div>
+
+    <div id="cheerings">
+      <div id="cheeringTitle">
+        Cheerings from Friends!
+      </div>
+      <div class="cheeringMessage">
+        <div class="message">
+          {{ You can do this! }}
+        </div>
+        <div class="commentedUser">
+          {{ commentedFriendID/can be blank }}
+        </div>
+      </div>
+      <div class="cheeringMessage">
+        <div class="message">
+          {{ Only three more days to go! }}
+        </div>
+        <div class="commentedUser">
+          {{ commentedFriendID/can be blank }}
+        </div>
+      </div>
+    </div>
+
+    <div id="softFailure">
+      <button id="buttonToSoftFailurePage"> {{ soft_failure_thumbnail }} </button>
+    </div>
+
+  </div>
+  <script src="../static/lib/jquery-3.3.1.min.js"></script>
+  <script src="../static/lib/popper.min.js"></script>
+  <script src="../static/lib/bootstrap.min.js"></script>
+  <script src="../static/js/user_home_page_js.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+#title {
+    font-family: BigNoodleTitling;
+    font-size: 70px;
+    text-align: center;
+    text-shadow: rgba(86, 86, 86, 0.6) 0 3px;
+}
+
+#subtitle {
+
+    font-family: BigNoodleTitling;
+    font-size: 30px;
+    line-height: 50%;
+    color: #272727;
+    text-align: center;
+}
+
+.first-label {
+	font-family: BigNoodleTitling;
+	font-size: 30px;
+    line-height: 50%;
+}
+
+.second-label {
+    font-family: sans-serif;
+    font-size: 15px;
+    line-height: 50%;
+}
+

@@ -3,45 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <title>Promiss: Cut-off your dependency!</title>
-  <link rel="stylesheet" href="../static/lib/bootstrap.min.css">
   <link rel="stylesheet" href="../static/css/user_home_page_css.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
   <div id="bodyWrapper">
 
     <div id="header">
       <div id="challenge">
-        {{ User1234 }}'s Challenge
+        <span id="username" class="badge badge-dark">HyoungJo</span> <strong>'s Challenge</strong>
       </div>
       <div id="timeClock">
-        <div id="timeLeft">
-          {{ 3 }} Days {{ 12:3:24 }} Left&nbsp
-        </div>
-        <div id="timeEnd">
-          / May 21th, 2019 18:00
-        </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li id="timeLeft" class="breadcrumb-item active" aria-current="page"> 3 Days 12:3:24 Left </li>
+            <li id="timeEnd" class="breadcrumb-item active" aria-current="page"> May 21th, 2019 18:00 </li>
+          </ol>
+        </nav>
       </div>
-      <div id="progressBar">
-        -----------------------------------------------------------------
+      <div id="progressBarWrapper">
+        <div id="progressBar">
+          <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+            <span id="current-progress"></span>
+          </div>
+        </div>
       </div>
     </div>
 
     <div id="userGoals">
       <div id="miniGoals">
-        <Carousel>{{ goal1 }}</Carousel>
+        <div class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              first item
+            </div>
+            <div class="carousel-item">
+              second item
+            </div>
+            <div class="carousel-item">
+              third item
+            </div>
+          </div>
+          <ol class="carousel-indicators">
+            <li data-target=".carousel" data-slide-to="0" class="active"></li>
+            <li data-target=".carousel" data-slide-to="1"></li>
+            <li data-target=".carousel" data-slide-to="2"></li>
+          </ol>
+          <a class="carousel-control-prev" href=".carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href=".carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
       </div>
-      <button id="edit">edit</button>
+      <div id="edit">
+        Edit
+        <i class="fas fa-cog"></i>
+      </div>
     </div>
 
     <div id="sharingToSNS">
       <div id="poking">
-        <button class="buttonToSharingPage" id="buttonToPokingPage"> {{ poking_thumbnail }} </button>
+        <button type="button" class="buttonToSharingPage btn btn-warning" id="buttonToPokingPage"> Poking </button>
       </div>
       <div id="betting">
-        <button class="buttonToSharingPage" id="buttonToBettingPage"> {{ betting_thumbnail }} </button>
+        <button type="button" class="buttonToSharingPage btn btn-success" id="buttonToBettingPage"> Bet on You! </button>
       </div>
       <div id="poster">
-        <button class="buttonToSharingPage" id="buttonToPosterPage"> {{ poster_thumbnail }} </button>
+        <button type="button" class="buttonToSharingPage btn btn-primary" id="buttonToPosterPage"> Poster </button>
       </div>
     </div>
 
@@ -49,32 +82,32 @@
       <div id="cheeringTitle">
         Cheerings from Friends!
       </div>
-      <div class="cheeringMessage">
-        <div class="message">
-          {{ You can do this! }}
-        </div>
-        <div class="commentedUser">
-          {{ commentedFriendID/can be blank }}
-        </div>
-      </div>
-      <div class="cheeringMessage">
-        <div class="message">
-          {{ Only three more days to go! }}
-        </div>
-        <div class="commentedUser">
-          {{ commentedFriendID/can be blank }}
-        </div>
-      </div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="message">You can do this!</div>
+          <div class="commentedUser">
+            <i class="fas fa-user-circle"></i>
+            userID
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="message">Only three more days to go!</div>
+          <div class="commentedUser">
+            <i class="fas fa-user-circle"></i>
+            userID
+          </div>
+        </li>
+      </ul>
     </div>
 
     <div id="softFailure">
-      <button id="buttonToSoftFailurePage"> {{ soft_failure_thumbnail }} </button>
+      <button type="button" class="btn btn-info" id="buttonToSoftFailurePage"> Really want to chill today? </button>
     </div>
 
   </div>
-  <script src="../static/lib/jquery-3.3.1.min.js"></script>
-  <script src="../static/lib/popper.min.js"></script>
-  <script src="../static/lib/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="../static/js/user_home_page_js.js"></script>
 </body>
 </html>

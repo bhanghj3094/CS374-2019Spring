@@ -1,7 +1,14 @@
 new Vue ({
     el: '#enroll',
-    data: [],
+    data: {
+        user: {}
+    },
     mounted: null,
-    computed:
+    methods: {
+        sendUserInfo: function(){
+
+        }
+    }
+
 
 })

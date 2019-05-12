@@ -32,7 +32,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="form-id"><i class="far fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="only english and number, under 20 characters" aria-label="form_id" aria-describedby="form_id">
+                <input type="text" class="form-control" v-model="user.user_id" placeholder="only english and number, under 20 characters" aria-label="form_id" aria-describedby="form_id">
             </div>
             <br>
 
@@ -47,7 +47,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="form_password"><i class="fas fa-lock"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Do not use password that you commonly used." aria-label="form_password" aria-describedby="form_password">
+                <input type="text" class="form-control" v-model="user.user_password" placeholder="Do not use password that you commonly used." aria-label="form_password" aria-describedby="form_password">
             </div>
             <br>
 
@@ -62,7 +62,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="form_verify_password"><i class="fas fa-lock"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="type password that you wrote at upper form." aria-label="form_verify_password" aria-describedby="form_verify_password">
+                <input type="text" class="form-control" v-model="user.user_password_verify" placeholder="type password that you wrote at upper form." aria-label="form_verify_password" aria-describedby="form_verify_password">
             </div>
             <br>
 
@@ -77,12 +77,12 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="form_email"><i class="far fa-envelope"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="promiss@kaist.ac.kr" aria-label="form_email" aria-describedby="form_email">
+                <input type="text" class="form-control" v-model="user.user_email" placeholder="promiss@kaist.ac.kr" aria-label="form_email" aria-describedby="form_email">
             </div>
             <br>
 
             <div align="center">
-                <button id="next" type="button" class="btn btn-lg btn-secondary">NEXT</button>
+                <button id="next" type="button" class="btn btn-lg btn-primary">NEXT</button>
             </div>
 
         </div>

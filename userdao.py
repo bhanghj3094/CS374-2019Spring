@@ -1,3 +1,4 @@
+import datetime
 
 class UserDao():
 
@@ -23,6 +24,7 @@ class UserDao():
 		user_password = user["user_password"]
 		user_email = user["user_email"]
 		dependency = user["dependency"]
+		start_date = user["start_date"]
 		goal_date = user["goal_date"]
 		spent_money = user["spent_money"]
 		spent_per = user["spent_per"]
@@ -31,9 +33,9 @@ class UserDao():
 		mini_goal_3 = user["mini_goal_3"]
 
 		with self.conn.cursor() as cursor:
-			cursor.execute("INSERT INTO user_info(user_id, user_password, user_email, dependency, goal_date, spent_money, spent_per, mini_goal_1, mini_goal_2, mini_goal_3)"
+			cursor.execute("INSERT INTO user_info(user_id, user_password, user_email, dependency, start_date, goal_date, spent_money, spent_per, mini_goal_1, mini_goal_2, mini_goal_3)"
 						   " VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
-						   (user_id, user_password, user_email, dependency, goal_date, spent_money, spent_per, mini_goal_1, mini_goal_2, mini_goal_3))
+						   (user_id, user_password, user_email, dependency, datetime.datetime.now(), goal_date, spent_money, spent_per, mini_goal_1, mini_goal_2, mini_goal_3))
 
 	def update_user(self, user):
 		user_id = user["user_id"]

@@ -26,3 +26,7 @@
     line-height: 50%;
 }
 
+.btn-primary {
+    background-color: #F74C4C;
+    outline: #F74C4C;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sharing Page</title>
+    <style>
+        #test_btn1{
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            margin-right: 1200px;
+        }
+        #test_btn2{
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            margin-left: -3px;
+        }
+        #btn_group button{
+            border: 1px solid skyblue;
+            background-color: rgba(0,0,0,0);
+            color: skyblue;
+            padding: 5px;
+        }
+        #btn_group button:hover{
+            color:white;
+            background-color: skyblue;
+        }
+    </style>
+    	<script language="JavaScript">
+
+		var SetTime = 0;		// 최초 설정 시간(기본 : 초)
+
+		function msg_time() {	// 1초씩 카운트
+
+			m = Math.floor(SetTime / 86400) + "D " + Math.floor(SetTime / 3600) + "H " + Math.floor(SetTime / 60) + "M " + (SetTime % 60) + "S";	// 남은 시간 계산
+
+			var msg = "Challenging for <font color='red' size='20em' family='Times New Roman'>" + m + "</font>";
+
+			document.all.ViewTimer.innerHTML = msg;		// div 영역에 보여줌
+
+			SetTime++;					// 1초씩 감소
+
+			if (SetTime < 0) {			// 시간이 종료 되었으면..
+
+				clearInterval(tid);		// 타이머 해제
+				alert("종료");
+			}
+
+		}
+
+		window.onload = function TimerStart(){ tid=setInterval('msg_time()',1000) };
+
+	</script>
+</head>
+<body>
+    <div id="btn_group">
+        <button id="test_btn1">Main</button>
+        <button id="test_btn2">User</button>
+    </div>
+
+    <br />
+    <br />
+
+    <div id="ViewTimer"></div>
+</body>
+</html>

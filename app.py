@@ -17,6 +17,13 @@ def get_user(user_id):
 	return json.dumps(user)
 
 
+@app.route('/send_user_info')
+def send_user():
+	user_info = request.get_json('user_info')
+
+
+
+
 @app.route('/create_user')
 def create_user():
 	conn = pool.get_connection()
@@ -36,6 +43,9 @@ def update_user():
 def hello_world():
 	return 'Hello World!'
 
+@app.route('/<path:path>')
+def send_js(path):
+    return send_from_directory('templates', path + ".html")
 
 if __name__ == '__main__':
 	app.run()

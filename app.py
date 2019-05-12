@@ -7,16 +7,17 @@ from dbconnection import DBPool
 app = Flask(__name__)
 pool = DBPool
 
+
 @app.route('/json/user/<user_id>')
 def get_user(user_id):
 	conn = pool.get_connection()
 	dao = UserDao(conn)
-	user = dao.get_user()
+	user = dao.get_user(user_id)
 
 	return json.dumps(user)
 
 
-@app.route('create_user')
+@app.route('/create_user')
 def create_user():
 	conn = pool.get_connection()
 	dao = UserDao(conn)
@@ -24,7 +25,7 @@ def create_user():
 	create_user(user)
 
 
-@app.route('update_user')
+@app.route('/update_user')
 def update_user():
 	conn = pool.get_connection()
 	dao = UserDao(conn)

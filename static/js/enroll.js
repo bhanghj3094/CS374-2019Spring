@@ -6,7 +6,7 @@ new Vue ({
     mounted: null,
     methods: {
         sendUserInfo: function(){
-
+            
         }
     }
 

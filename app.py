@@ -1,5 +1,5 @@
 import json
-from flask import Flask, request, send_from_directory, redirect
+from flask import Flask, request, send_from_directory, render_template
 from userdao import UserDao
 from dbconnection import DBPool
 
@@ -17,11 +17,10 @@ def get_user(user_id):
 	return json.dumps(user)
 
 
-@app.route('/send_user_info')
+@app.route('/send_user_info', methods='POST')
 def send_user():
 	user_info = request.get_json('user_info')
-
-
+	return render_template('challenge_set_up.html', user_info=user_info)
 
 
 @app.route('/create_user')

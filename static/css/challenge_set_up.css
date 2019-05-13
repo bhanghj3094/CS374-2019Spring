@@ -1,0 +1,172 @@
+@font-face {
+    font-family: BigNoodleTitling;
+    src: url("../lib/big_noodle_titling.ttf");
+}
+
+@font-face {
+    font-family: Helvetica;
+    src: url("../lib/helvetica.ttf");
+}
+
+input {
+    font-family: Helvetica;
+    font-size: 15px;
+}
+
+#title {
+    font-family: BigNoodleTitling;
+    font-size: 70px;
+    text-align: center;
+    text-shadow: rgba(86, 86, 86, 0.6) 0 3px;
+}
+
+#subtitle {
+    font-family: BigNoodleTitling;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    height: 100px;
+    line-height: 100px;
+    color: #272727;
+    margin-bottom: 100px;
+}
+
+#dependency {
+    border: none;
+    background-color: #FEF9E5;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 20px;
+}
+
+#dependency_image {
+    border: none;
+    width: 150px;
+    height: 150px;
+    display: block;
+}
+
+#challenge_set_up {
+    width: 65%;
+}
+
+#select_date {
+    height: 180px;
+    width: 100%;
+    background-color: #FEF9E5;
+    margin-bottom: 50px;
+    left: 50%;
+}
+
+#select_date_button {
+    width: 22%;
+    height: 60px;
+    position: relative; left: 3%; top: 50px;
+    font-family: BigNoodleTitling;
+    font-size: 35px;
+    background-color: #565656;
+    white-space:pre
+}
+
+#select_date_button_icon {
+    font-size: 15px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+#how_much_spent {
+    height: 220px;
+    width: 100%;
+    min-width: 300px;
+    background-color: #FEF9E5;
+    margin-bottom: 50px;
+    left: 50%;
+}
+
+#spent_money {
+    width: 20%;
+    min-width: 150px;
+    height: 60px;
+    font-family: Helvetica;
+    font-size: 20px;
+    text-align: center;
+    position: relative; left: 30px; top: 65px;
+}
+
+#spent_per_button {
+    width: 20%;
+    min-width: 150px;
+    height: 60px;
+    position: relative; left: 25%; top: 5px;
+    font-family: BigNoodleTitling;
+    font-size: 30px;
+    background-color: #565656;
+    white-space:pre
+}
+
+#mini_goals {
+    height: 400px;
+    width: 100%;
+    background-color: #FEF9E5;
+    margin-bottom: 50px;
+    left: 50%;
+}
+
+#create_challenge {
+    width: 30%;
+    min-width: 150px;
+    height: 60px;
+    font-family: BigNoodleTitling;
+    font-size: 30px;
+    background-color: #565656;
+    align-self: center;
+}
+
+.first-label {
+    position: relative; left: 30px; top: 40px;
+	font-family: BigNoodleTitling;
+	font-size: 40px;
+    line-height: 50%;
+}
+
+.second-label {
+    position: relative; left: 30px; top: 50px;
+    font-family: Helvetica;
+    font-size: 15px;
+    line-height: 50%;
+    margin-bottom: 85px;
+}
+
+.custom-range {
+    position: relative; left: 30px; top: 50px;
+    width: 50%;
+}
+
+.fa-caret-down {
+    font-size: 25px;
+}
+
+
+.mini_goal {
+    width: 60%;
+    height: 60px;
+    font-family: Helvetica;
+    font-size: 20px;
+    position: relative; left: 30px;
+}
+
+.mini_goal_money {
+    width: 20%;
+    height: 60px;
+    font-family: Helvetica;
+    font-size: 20px;
+    position: relative; left: 50px;
+}
+
+.inline {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 30px;
+}

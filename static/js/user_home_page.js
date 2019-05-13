@@ -1,5 +1,4 @@
 /* ===== progress bar variables ===== */
-
 $(function() {
   var current_progress = 0;
   var interval = setInterval(function() {
@@ -13,7 +12,6 @@ $(function() {
   }, 1000);
 });
 
-
 new Vue({
   el: "#userHomeBodyWrapper",
   name: "user_home_page_vue",
@@ -24,7 +22,7 @@ new Vue({
       time_left: "",
       end_time: "",
       complete_percentage: "",
-      dropdownText: "Help me!",
+      dropdownText: "None",
       user_goals: [],
       cheerings: [
         { 'message': 'You Can Do This!', 'friendName': 'userID1234'},
@@ -54,7 +52,7 @@ new Vue({
   },
   methods: {
     getUser: function () {
-        this.$http.get('/json/user/').then(function (response) {
+        this.$http.get('user_info').then(function (response) {
             this.user = response.data;
         });
         init();
@@ -91,7 +89,7 @@ new Vue({
   created() {
     console.log("user_home_page js loaded");
 
-    axios.get('/json/user/' + this.user_id) // suyeon
+    axios.get('user_info') // suyeon
       .then(res => {
         /* ===== Header ===== */
         // bring name and change username variable
@@ -107,9 +105,9 @@ new Vue({
 
         // bring start date, end date
         // => calculate time_left and draw the bar.
-        this.time_left = ""; // 3 Days 12:3:24
-        this.end_time = ""; // May 21th, 2019 18:00
-        this.complete_percentage = (time_left/(end-start)) * 100;
+        // this.time_left = ""; // 3 Days 12:3:24
+        // this.end_time = ""; // May 21th, 2019 18:00
+        // this.complete_percentage = (time_left/(end-start)) * 100;
 
         // => tick the clock timer
         setInterval(tickClockTimer, 1000);

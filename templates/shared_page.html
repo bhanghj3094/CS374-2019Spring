@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Promiss: Cut-off your dependency!</title>
+  <link rel="stylesheet" href="../static/css/shared_page_css.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+  <div id="sharedPageBodyWrapper">
+
+    <div id="header">
+      <button type="button" class="btn btn-light" onClick="location.href='main.html'">
+        <i class="fas fa-home" style="font-size: 20px"></i>
+        <span style="font-size: 20px">Main Page</span>
+      </button>
+      <div id="challenge">
+        <span id="username" class="badge badge-dark">{{ username }}</span> <strong>'s Challenge</strong>
+      </div>
+      <button id="reportButton" type="button" data-toggle="modal" data-target="#reportModal"
+              class="btn btn-danger" >REPORT</button>
+      <div id="reportModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">New Report</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="uploadReportImage">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="imageToReport" aria-describedby="inputGroupFileAddon04">
+                  <label class="custom-file-label" for="imageToReport">Choose file</label>
+                </div>
+                <button id="modalUploadButton" class="btn btn-success">
+                  Upload
+                </button>
+              </div>
+              <form>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Message to your friend:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Report</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="timer">
+      <div id="countdown">
+        <div id='tiles'></div>
+        <div class="labels">
+          <li>Days</li>
+          <li>Hours</li>
+          <li>Mins</li>
+          <li>Secs</li>
+        </div>
+      </div>
+      <div id="progressBarWrapper">
+        <div id="progressBar">
+          <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+            <span id="current-progress"></span>
+          </div>
+        </div>
+      </div>
+      <div id="dependency_timeEnd_wrapper">
+        <div id="dependency">
+          Cut-off: Alcohol <i class="fas fa-beer"></i>
+        </div>
+        <div id="timeEnd">
+          Due Date: {{ end_time }}
+        </div>
+      </div>
+    </div>
+
+    <div id="userGoals">
+      <div id="moneySaved">
+        <span class="badge badge-pill badge-light">
+          </span>Saved: ₩ 34,300
+      </div>
+      <div id="miniGoals">
+        <div class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              first item
+            </div>
+            <div class="carousel-item">
+              second item
+            </div>
+            <div class="carousel-item">
+              third item
+            </div>
+          </div>
+          <ol class="carousel-indicators">
+            <li data-target=".carousel" data-slide-to="0" class="active"></li>
+            <li data-target=".carousel" data-slide-to="1"></li>
+            <li data-target=".carousel" data-slide-to="2"></li>
+          </ol>
+          <a class="carousel-control-prev" href=".carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href=".carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="cheeringMessage">
+      <form id="cheeringMessageInput">
+        <input type="text" class="form-control" placeholder="Leave a message for your friend">
+        <input id="cheeringFriendName" type="text" class="form-control" placeholder="name (optional)">
+        <button class="btn btn-success">Send</button>
+      </form>
+    </div>
+
+    <div id="poking">
+      <div id="pokingBoard">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">/</th>
+              <th scope="col"># of Pokes</th>
+              <th scope="col">Friend Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>34</td>
+              <td>Jason</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>26</td>
+              <td>Christina</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>20</td>
+              <td>Hyeongshin</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>14</td>
+              <td>Jinwon</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>9</td>
+              <td>Suyeon</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="poke">
+        <div>It's your turn!</div>
+        <small>poke and remind your friend</small>
+        <br />
+        <div id="pokingInput">
+          <input id="pokingFriendName" type="text" class="form-control" placeholder="name">
+          <button class="btn btn-warning">
+            Poke <i class="far fa-hand-point-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="betting">
+      <div id="bettingBoard" class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table id="succeedTable" class="table">
+          <thead>
+            <tr><th scope="col">Succeed</th></tr>
+            <tr><th scope="col">Total: 35,000 won</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>₩20,000</td>
+              <td>Simon</td>
+            </tr>
+            <tr>
+              <td>₩15,000</td>
+              <td>James</td>
+            </tr>
+          </tbody>
+        </table>
+        <table id="failureTable" class="table">
+          <thead>
+            <tr><th scope="col">Failure</th></tr>
+            <tr><th scope="col">Total: 57,000 won</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>₩10,000</td>
+              <td>Simon</td>
+            </tr>
+            <tr>
+              <td>₩26,000</td>
+              <td>James</td>
+            </tr>
+            <tr>
+              <td>₩21,000</td>
+              <td>James</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="bet">
+        <div>Bet on {{ username }}!</div>
+        <small>show trust in your friend</small>
+        <div id="bettingInput">
+          <input id="bettingAmount" type="text" class="form-control" placeholder="how much?">
+          <div>
+            <input id="bettingFriendName" type="text" class="form-control" placeholder="name">
+            <button class="btn btn-warning">
+              Bet <i class="fas fa-money-check-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="poster">
+      position for poster
+    </div>
+
+
+    <div id="footer"></div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="../static/lib/vue-2.5.22.js"></script>
+  <script src="../static/js/shared_page_js.js"></script>
+</body>
+</html>

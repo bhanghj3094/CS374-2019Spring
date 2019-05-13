@@ -27,6 +27,7 @@ new Vue({
         { 'message': 'You Can Do This!', 'friendName': 'userID1234'},
         { 'message': 'Only three more days to go!', 'friendName': 'userID5678'}
       ],
+      num_of_tokens: 2, //
     }
   },
   methods: {
@@ -44,6 +45,11 @@ new Vue({
           // res.status 가 정상 200인지만 확인
         })
         .catch(err => console.log(err));
+    },
+    soft_failure: function (tokens) {
+
+      // 여기서 원래 random 으로 redirect!
+      location.href='../../templates/rock_scissor_paper.html';
     }
 
   },

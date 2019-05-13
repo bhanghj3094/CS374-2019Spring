@@ -1,4 +1,5 @@
 /* ===== progress bar variables ===== */
+
 $(function() {
   var current_progress = 0;
   var interval = setInterval(function() {
@@ -12,27 +13,65 @@ $(function() {
   }, 1000);
 });
 
+
 new Vue({
   el: "#userHomeBodyWrapper",
   name: "user_home_page_vue",
-  data() {
-    return {
-      username: "HyoungJo", // 처음엔 비어있어야함
-      time_left: "3 Days 12:3:24", // 처음엔 비어있어야함
-      end_time: "May 21th, 2019 18:00", // 처음엔 비어있어야함
+  data: function() {
+    return{
+      userid: "",
+      user: {},
+      time_left: "",
+      end_time: "",
+      complete_percentage: "",
+      dropdownText: "Help me!",
+      user_goals: [],
+      cheerings: [
+        { 'message': 'You Can Do This!', 'friendName': 'userID1234'},
+        { 'message': 'Only three more days to go!', 'friendName': 'userID5678'},
+      ],
+      /*
+      userid: "HyoungJo", // It is empty at first.
+      time_left: "3 Days 12:3:24", // It is empty at first.
+      end_time: "May 21th, 2019 18:00", // It is empty at first.
       complete_percentage: 0,
-      dropdownText: "None", // 이거는 Share on SNS 할 때 필요
-      user_goals: ["0.1 iPad", "12 Americanos", "0.01 Paris Trip"], // 처음엔 비어있어야함
+      dropdownText: "None", // It needs to share on SNS
+      user_goals: ["0.1 iPad", "12 Americanos", "0.01 Paris Trip"], // It is empty at first.
       cheerings: [
         { 'message': 'You Can Do This!', 'friendName': 'userID1234'},
         { 'message': 'Only three more days to go!', 'friendName': 'userID5678'}
-      ],
-    }
+      ],*/
+    };
+  },
+  mounted() {
+    this.getUser();
+    this.end = new Date(this.end_time).getTime();
+    // Update the count down every 1 second
+    this.timerCount(this.start,this.end);
+    this.interval = setInterval(() => {
+        this.timerCount(this.start,this.end);
+    }, 1000);
   },
   methods: {
+    getUser: function () {
+        this.$http.get('/json/user/').then(function (response) {
+            this.user = response.data;
+        });
+        init();
+    },
+    init: function () {
+      console.log("hello");
+      this.userid = this.user["user_id"];
+      var now = new Date().getTime();
+      this.time_left = this.user["goal_date"] - now;
+      this.end_time = this.user["goal_date"];
+      var percent = this.time_left / (this.user["goal_date"] - this.user["start_date"]);
+      this.complete_percentage = percent;
+      this.user_goals = [this.user["mini_goal_1"], this.user["mini_goal_2"], this.user["mini_goal_3"]];
+    },
     changeDropdown: function (content) {
       this.dropdownText = content;
-      // 이건 이미 작동하는 함수.
+      // already run
     },
     tickClockTimer: function () {
       // subtract one second from time_left.
@@ -41,25 +80,35 @@ new Vue({
     shareOnSNS: function (feature_for_sharing) {
       axios.post("서버로~")
         .then(res => {
-          // res.status 가 정상 200인지만 확인
+          // Check res.status is 200
         })
         .catch(err => console.log(err));
-    }
-
+    },
+    softFailure: function() {
+      // Math.floor(Math.random()*2);
+    },
   },
   created() {
     console.log("user_home_page js loaded");
 
-    axios.get("to our flask") // 수연누나
+    axios.get('/json/user/' + this.user_id) // suyeon
       .then(res => {
         /* ===== Header ===== */
         // bring name and change username variable
+        console.log("hello");
+        this.userid = this.user["user_id"];
+        var now = new Date().getTime();
+        this.time_left = this.user["goal_date"] - now;
+        this.end_time = this.user["goal_date"];
+        var percent = this.time_left / (this.user["goal_date"] - this.user["start_date"]);
+        this.complete_percentage = percent * 100;
+        this.user_goals = [this.user["mini_goal_1"], this.user["mini_goal_2"], this.user["mini_goal_3"]];
         this.username = "";
 
         // bring start date, end date
         // => calculate time_left and draw the bar.
         this.time_left = ""; // 3 Days 12:3:24
-        this.end_time = ""; // May 21th, 2019 18:00 이런 꼴로 만들어서 넣어라
+        this.end_time = ""; // May 21th, 2019 18:00
         this.complete_percentage = (time_left/(end-start)) * 100;
 
         // => tick the clock timer
@@ -67,13 +116,13 @@ new Vue({
 
 
         // bring user daily uses, and user goal items
-        const totalSavedMoney = 34300; // 유저가 입력한 소비패턴으로, 현재까지 모은 돈을 계산한다.
-        // saved money 나누기 각 항목 후 그 숫자를 앞에 붙여서 user_goals 에 차례로 넣기
+        const totalSavedMoney = 34300; // Calculate money collected to now for user's consumption pattern
+        // saved money division by respective item and then input user_goals
         // { 'iPad': '340,000', 'Americano': '2,000', 'Paris Trip': '3,500,000'}
 
 
         // bring cheerings from friends
-        // DB 파싱해서 위에 cheerings 넣기
+        // DB farthing and put in cheerings
 
       })
       .catch(err => console.log(err));

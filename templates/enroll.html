@@ -17,7 +17,9 @@
 </div>
 
 <br>
+
 <div id="enroll" class="container">
+    <form id="enroll_form" action="/send_user_info" method="post">
     <div class="row justify-content-center">
         <div class="col-5">
 
@@ -82,17 +84,22 @@
             <br>
 
             <div align="center">
-                <button id="next" type="button" v-on:click="sendUserInfo" class="btn btn-lg btn-primary">N E X T</button>
+                <button id="next" type="button" class="btn btn-lg btn-primary" v-on:click="sendUserInfo">N E X T</button>
             </div>
         </div>
     </div>
-
-
+    </form>
 </div>
+
 
 
 <script src="../static/lib/jquery-3.3.1.min.js"></script>
 <script src="../static/lib/popper.min.js"></script>
 <script src="../static/lib/bootstrap.min.js"></script>
+<script src="../static/lib/vue-2.5.22.js"></script>
+<script src="../static/lib/vue-resource@1.5.1"></script>
+<script src="../static/js/enroll.js"></script>
+
+
 </body>
 </html>

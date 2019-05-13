@@ -151,7 +151,32 @@
     </div>
 
     <div id="softFailure">
-      <button type="button" class="btn btn-info" id="buttonToSoftFailurePage" v-on:click="softFailure()"> Really want to chill today? </button>
+      <button type="button" data-toggle="modal" data-target="#softFailureModal"
+              class="btn btn-info" id="buttonToSoftFailurePage">
+        Really want to chill today?
+        <small>get token for a day off</small>
+      </button>
+      <div class="modal fade" id="softFailureModal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Earn your token!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+<!--              Your Tokens: {{ num_of_tokens }}-->
+<!--              <br />-->
+              "This action will bring you to a rock-scissor-paper game against a computer. This computer never lost in last 10 years. Give it a shot and if you manage to win, a token for a day-off will be given to you!"
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" onClick="location.href='rock_scissor_paper.html'">Go</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>

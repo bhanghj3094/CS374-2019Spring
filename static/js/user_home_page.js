@@ -38,8 +38,9 @@ new Vue({
       cheerings: [
         { 'message': 'You Can Do This!', 'friendName': 'userID1234'},
         { 'message': 'Only three more days to go!', 'friendName': 'userID5678'}
-      ],*/
-    };
+      ],
+      num_of_tokens: 2, //
+    };*/
   },
   mounted() {
     this.getUser();
@@ -82,9 +83,12 @@ new Vue({
         })
         .catch(err => console.log(err));
     },
-    softFailure: function() {
-      // Math.floor(Math.random()*2);
-    },
+    soft_failure: function (tokens) {
+
+      // 여기서 원래 random 으로 redirect!
+      location.href='../../templates/rock_scissor_paper.html';
+    }
+
   },
   created() {
     console.log("user_home_page js loaded");

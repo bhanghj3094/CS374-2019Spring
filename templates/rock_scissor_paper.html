@@ -3,13 +3,12 @@
 
 <head>
     <title>Rock Scissor Paper</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link rel="stylesheet" href="css/foundation.min.css">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="../static/lib/foundation.min.css">
+    <link rel="stylesheet" href="../static/css/rock_scissor_paper.css">
 </head>
 
 <body>
-    <div id="app">
+    <div id="rock_scissor_paper">
         <div class="row">
             <div class="small-5 columns text-center">
                 <img 
@@ -37,13 +36,13 @@
                 <div class="battle-wrap">
                     <img
                         v-for="life in lifeOfMe"
-                        src="./images/heart.jpg"
+                        src="../static/img/heart.jpg"
                         class="heart"
                         alt=""
                     >
                     <img
                         v-for="life in leftLifeOfMe"
-                        src="./images/broken-heart.jpg"
+                        src="../static/img/broken-heart.jpg"
                         class="heart"
                         alt=""
                     >
@@ -53,13 +52,13 @@
                 <div class="battle-wrap">
                     <img
                         v-for="life in lifeOfCom" 
-                        src="./images/heart.jpg"
+                        src="../static/img/heart.jpg"
                         class="heart"
                         alt=""
                     >
                     <img
                         v-for="life in leftLifeOfCom"
-                        src="./images/broken-heart.jpg"
+                        src="../static/img/broken-heart.jpg"
                         class="heart"
                         alt=""
                     >
@@ -107,7 +106,8 @@
             </div>
         </div>
     </div>
-    <script src="app.js"></script>
+    <script src="../static/lib/vue-2.5.22.js"></script>
+    <script src="../static/js/rock_scissor_paper.js"></script>
 </body>
 
 </html>

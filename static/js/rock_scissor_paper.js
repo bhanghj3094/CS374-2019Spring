@@ -1,5 +1,5 @@
 new Vue({
-    el: '#app',
+    el: '#rock_scissor_paper',
     data: {
         myChoice: null,
         comChoice: null,
@@ -17,10 +17,10 @@ new Vue({
     },
     computed: {
         myChoiceImg: function () {
-            return this.myChoice !== null ? `images/${this.myChoice}.jpg` : 'images/question.jpg'
+            return this.myChoice !== null ? `img/${this.myChoice}.jpg` : 'img/question.jpg'
         },
         comChoiceImg: function () {
-            return this.comChoice !== null ? `images/${this.comChoice}.jpg` : 'images/question.jpg'
+            return this.comChoice !== null ? `img/${this.comChoice}.jpg` : 'img/question.jpg'
         },
         leftLifeOfMe: function () {
             return 3 - this.lifeOfMe

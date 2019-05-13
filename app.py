@@ -17,10 +17,10 @@ def get_user(user_id):
 	return json.dumps(user)
 
 
-@app.route('/send_user_info', methods='POST')
+@app.route('/send_user_info', methods=['POST'])
 def send_user():
-	user_info = request.get_json('user_info')
-	return render_template('challenge_set_up.html', user_info=user_info)
+
+	return render_template('challenge_set_up.html')
 
 
 @app.route('/create_user')
@@ -38,13 +38,23 @@ def update_user():
 	user = request.get_json('user_updated')
 	create_user(user)
 
+
 @app.route('/')
 def hello_world():
 	return 'Hello World!'
 
-@app.route('/<path:path>')
+
+@app.route('/<path:path>', methods=['get', 'post'])
 def send_js(path):
     return send_from_directory('templates', path + ".html")
+
+
+@app.after_request
+def set_response_headers(response):
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
 
 if __name__ == '__main__':
 	app.run()

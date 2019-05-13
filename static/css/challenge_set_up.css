@@ -61,6 +61,7 @@ input {
 
 #select_date_button {
     width: 22%;
+    min-width: 150px;
     height: 60px;
     position: relative; left: 3%; top: 50px;
     font-family: BigNoodleTitling;
@@ -107,7 +108,7 @@ input {
 }
 
 #mini_goals {
-    height: 400px;
+    height: 430px;
     width: 100%;
     background-color: #FEF9E5;
     margin-bottom: 50px;
@@ -135,7 +136,6 @@ input {
     position: relative; left: 30px; top: 50px;
     font-family: Helvetica;
     font-size: 15px;
-    line-height: 50%;
     margin-bottom: 85px;
 }
 
@@ -150,7 +150,7 @@ input {
 
 
 .mini_goal {
-    width: 60%;
+    width: 70%;
     height: 60px;
     font-family: Helvetica;
     font-size: 20px;
@@ -162,7 +162,7 @@ input {
     height: 60px;
     font-family: Helvetica;
     font-size: 20px;
-    position: relative; left: 50px;
+    position: relative; left: 7%;
 }
 
 .inline {

@@ -1,3 +1,24 @@
+@font-face {
+    font-family: BigNoodleTitling;
+    src: url("../lib/big_noodle_titling.ttf");
+}
+
+@font-face {
+    font-family: Helvetica;
+    src: url("../lib/helvetica.ttf");
+}
+
+
+input {
+    font-family: Helvetica;
+    font-size: 15px;
+}
+
+input::placeholder {
+    font-family: Helvetica;
+    font-size: 15px;
+}
+
 #title {
     font-family: BigNoodleTitling;
     font-size: 70px;
@@ -17,16 +38,26 @@
 .first-label {
 	font-family: BigNoodleTitling;
 	font-size: 30px;
-    line-height: 50%;
+    line-height: 100%;
 }
 
 .second-label {
-    font-family: sans-serif;
+    font-family: Helvetica;
     font-size: 15px;
     line-height: 50%;
 }
 
 .btn-primary {
+    width: 150px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 50px;
+    text-align: center;
     background-color: #F74C4C;
     border: #F74C4C;
+    font-family: BigNoodleTitling;
+    font-size: 30px;
 }

@@ -24,7 +24,6 @@ class UserDao():
 		user_password = user["user_password"]
 		user_email = user["user_email"]
 		dependency = user["dependency"]
-		start_date = user["start_date"]
 		goal_date = user["goal_date"]
 		spent_money = user["spent_money"]
 		spent_per = user["spent_per"]

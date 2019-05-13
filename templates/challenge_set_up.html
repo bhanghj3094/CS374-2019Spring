@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/challenge_set_up.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+<div id="title">
+    <span style="color: #272727">Your</span>
+    <span style="color: #F74C4C"> Challenge</span>
+</div>
+<br><br>
+<div id="subtitle">
+    To cut-off
+    <button id="dependency" type="button"><img id="dependency_image" src='../static/img/alcohol.png'></button>
+    Dependency
+</div>
+
+<div id="challenge_set_up" class="container">
+
+    <div id="select_date">
+        <p class="first-label">How Long?</p>
+        <button id="select_date_button" class="btn btn-secondary select_button ">Select Date<i id="select_date_button_icon" class="fas fa-external-link-alt"></i></button>
+    </div>
+    <div id="how_much_spent">
+        <p class="first-label">How Much Spent for {{ dependency }}</p>
+        <input type="range" class="custom-range" min="0" max="100000" step="100" v-model="spent_money">
+        <input id="spent_money" type="number" class="form-control" v-model="spent_money"/>
+        <button id="spent_per_button" class="btn btn-secondary">/ DAY  <i class="fas fa-caret-down"></i></button>
+    </div>
+
+    <div id="mini_goals">
+        <p class="first-label">Save Your Money For?</p>
+        <p class="second-label">If you cut-off your dependency, then you can buy it! choose your goal.</p>
+        <div class="inline">
+            <input id="goal_1" class="form-control mini_goal" placeholder="Trip to Europe"/>
+            <input id="money_1" type="number" class="form-control mini_goal_money" placeholder="₩4,000,000"/>
+        </div>
+        <div class="inline">
+            <input id="goal_2" class="form-control mini_goal" placeholder="Macbook Pro"/>
+            <input id="money_2" type="number" class="form-control mini_goal_money" placeholder="₩2,000,000"/>
+        </div>
+        <div class="inline">
+            <input id="goal_3" class="form-control mini_goal" placeholder="Birthday gift for Mother"/>
+            <input id="money_3" type="number" class="form-control mini_goal_money" placeholder="₩500,000"/>
+        </div>
+
+    </div>
+    <p align="center"><button id="create_challenge" class="btn btn-secondary">Create Challenge</button></p>
+</div>
+
+<script src="../static/lib/jquery-3.3.1.min.js"></script>
+<script src="../static/lib/popper.min.js"></script>
+<script src="../static/lib/bootstrap.min.js"></script>
+<script src="../static/lib/vue-2.5.22.js"></script>
+<script src="../static/js/challenge_set_up.js"></script>
+</body>
+</html>

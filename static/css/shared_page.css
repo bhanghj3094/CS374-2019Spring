@@ -169,6 +169,7 @@ body {
   background-color: #dabfa0 !important;
 }
 .carousel-control-prev, .carousel-control-next {
+  filter: invert(100%);
   color: #dabfa0 !important;
   /* 이거 현재 적용 안됨 */
 }

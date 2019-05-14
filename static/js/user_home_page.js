@@ -76,7 +76,6 @@ new Vue({
     moneyCount: function(start,now){
       var calc_saved_money = (now - start) * this.spent_money_ms;
       this.saved_money = this.numberWithCommas(calc_saved_money.toFixed(2));
-      console.log(calc_saved_money);
     },
     numberWithCommas: function(x){
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

@@ -9,11 +9,9 @@ new Vue({
     },
     mounted: function (){
 
-        this.$http.get('user_info').then(response => {
-            this.user = response.data;
-        })
-        // dependencyImage = '@/img/alcohol.png';
-        // console.log(dependencyImage);
+        // this.$http.get('user_info').then(response => {
+        //     this.user = response.data;
+        // })
 
     },
     computed: {

@@ -121,8 +121,8 @@ body {
   height: 20px;
 }
 .progress-bar {
-  background-color: seagreen !important;
-  font-size: 0.5rem !important;
+  background-color: #F74C4C !important;
+  font-size: 0.6rem !important;
 }
 .progress-bar-striped {
   background-size: 2rem 2rem !important;

@@ -3,32 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>Promiss: Cut-off your dependency!</title>
-  <link rel="stylesheet" href="../static/css/user_home_page.css">
-  <link rel="stylesheet" href="../static/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/user_home_page.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
   <div id="userHomeBodyWrapper">
 
     <div id="header">
-      <div id="challenge">
-        <span id="username" class="badge badge-dark">{{ userid }}</span> <strong>'s Challenge</strong>
+        <div id="challenge">
+            <span id="username" class="badge badge-dark">{{ userid }}</span> <strong>'s Challenge</strong>
+        </div>
+        <div id="timeClock">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li id="timeLeft" class="breadcrumb-item active" aria-current="page">{{ print_time_left }} <Strong>Left</Strong></li>
+                    <li id="timeEnd" class="breadcrumb-item active" aria-current="page">{{ print_end_time }}</li>
+                </ol>
+            </nav>
       </div>
-      <div id="timeClock">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li id="timeLeft" class="breadcrumb-item active" aria-current="page">{{ print_time_left }} <Strong>Left</Strong></li>
-            <li id="timeEnd" class="breadcrumb-item active" aria-current="page">{{ print_end_time }}</li>
-          </ol>
-        </nav>
-      </div>
+        <button id="edit" onClick="location.href='challenge_set_up'" type="button" class="btn btn-light">
+            Edit
+            <i class="fas fa-cog"></i>
+        </button>
       <div id="progressBarWrapper">
         <div id="progressBar">
-          <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+          <div id="dynamic" class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
             <span id="current-progress"></span>
           </div>
         </div>
       </div>
+
+
     </div>
 
     <div id="userGoals">
@@ -64,22 +70,17 @@
           </a>
         </div>
       </div>
-      <div>
-        <button id="edit" onClick="location.href='challenge_set_up'" type="button" class="btn btn-light">
-          Edit
-          <i class="fas fa-cog"></i>
-        </button>
-      </div>
+
     </div>
 
     <div id="sharingToSNS">
       <button type="button" onClick="location.href='shared_page'"
-              id="buttonToSharingPage" class="btn btn-warning">
+              id="buttonToSharingPage" class="btn btn btn-secondary">
         <div>Go To Shared Page!</div>
         <small>check out what your friends did</small>
       </button>
       <button id="showSharingModal" type="button" data-toggle="modal" data-target="#sharingModal"
-              class="btn btn-outline-primary">Share on SNS</button>
+              class="btn btn btn-primary">Share on SNS</button>
     </div>
     <div id="sharingModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
@@ -146,9 +147,7 @@
           <ul class="pagination">
             <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
             <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
           </ul>
         </nav>
       </div>
@@ -156,8 +155,8 @@
 
     <div id="softFailure">
       <button type="button" data-toggle="modal" data-target="#softFailureModal"
-              class="btn btn-info" id="buttonToSoftFailurePage">
-        Really want to chill today?
+              class="btn btn-secondary" id="buttonToSoftFailurePage">
+          <div>Really want to chill today?</div>
         <small>get token for a day off</small>
       </button>
       <div class="modal fade" id="softFailureModal" role="dialog" aria-hidden="true">

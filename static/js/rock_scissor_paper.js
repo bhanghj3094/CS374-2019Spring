@@ -17,10 +17,10 @@ new Vue({
     },
     computed: {
         myChoiceImg: function () {
-            return this.myChoice !== null ? `img/${this.myChoice}.jpg` : 'img/question.jpg'
+            return this.myChoice !== null ? `../static/img/${this.myChoice}.jpg` : '../static/img/question.jpg'
         },
         comChoiceImg: function () {
-            return this.comChoice !== null ? `img/${this.comChoice}.jpg` : 'img/question.jpg'
+            return this.comChoice !== null ? `../static/img/${this.comChoice}.jpg` : '../static/img/question.jpg'
         },
         leftLifeOfMe: function () {
             return 3 - this.lifeOfMe

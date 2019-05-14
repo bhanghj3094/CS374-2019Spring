@@ -28,14 +28,26 @@ new Vue({
         { 'message': 'You Can Do This!', 'friendName': 'userID1234'},
         { 'message': 'Only three more days to go!', 'friendName': 'userID5678'}
       ],
-      num_of_tokens: 2, //
+      spent_money: 10000, // It is empty at first.
+      spent_per: "Day", // It is empty at first.
+      spent_money_ms: 0, // It is empty at first.
+      saved_money: "", // It is empty at first.
+      num_of_tokens: 2, // tokens for soft_failure
     };
+  },
+  created() {
+    if(this.spent_per == "Day")
+      this.spent_money_ms = this.spent_money / 86400000;
+    else if(this.spent_per == "Week")
+      this.spent_money_ms = this.spent_moeny / (86400000 * 7);
+    else if(this.spent_per == "Month")
+      this.spent_money_ms = this.spent_money / (86400000 * 7 * 30);
   },
   mounted() {
     // this.getUser();
     this.print_end_time = this.getTimeStamp(this.end_time);
     // Update the count down every 1 second
-    this.timerCount(this.start_time,this.end_time);
+    this.timerCount();
     this.interval = setInterval(() => {
         this.timerCount(this.start,this.end);
     }, 1000);
@@ -57,21 +69,30 @@ new Vue({
       var zero = '';
       n = n.toString();
 
-      if (n.length < digits) {
-        for (i = 0; i < digits - n.length; i++)
+      for (i = 0; i < digits - n.length; i++)
           zero += '0';
-      }
       return zero + n;
     },
-    timerCount: function(start,end){
+    moneyCount: function(start,now){
+      var calc_saved_money = (now - start) * this.spent_money_ms;
+      this.saved_money = this.numberWithCommas(calc_saved_money.toFixed(2));
+      console.log(calc_saved_money);
+    },
+    numberWithCommas: function(x){
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+    timerCount: function(){
         // Get todays date and time
+        var start = this.start_time;
+        var end = this.end_time;
         var now = new Date();
 
         // Find the distance between now an the count down date
-        this.time_left = this.end_time - now;
+        this.time_left = end - now;
         this.print_time_left = this.calcTime(this.time_left);
-        var percent = (now - this.start_time) / (this.end_time - this.start_time) * 100;
+        var percent = (now - start) / (end - start) * 100;
         this.complete_percentage = percent.toFixed(4);
+        this.moneyCount(start,now);
         $("#dynamic")
         .css("width", this.complete_percentage + "%")
         .attr("aria-valuenow", this.complete_percentage)

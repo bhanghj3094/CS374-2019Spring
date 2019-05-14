@@ -46,17 +46,17 @@ def hello_world():
 
 @app.route('/<path:path>', methods=['get', 'post'])
 def send_js(path):
-    return send_from_directory('templates', path + ".html")
+	return send_from_directory('templates', path + ".html")
 
 
 @app.after_request
 def set_response_headers(response):
-    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-    response.headers['Pragma'] = 'no-cache'
-    response.headers['Expires'] = '0'
-    return response
+	response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+	response.headers['Pragma'] = 'no-cache'
+	response.headers['Expires'] = '0'
+	return response
 
 if __name__ == '__main__':
-	app.run()
+	app.run(host='0.0.0.0')
 
 

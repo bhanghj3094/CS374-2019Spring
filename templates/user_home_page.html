@@ -12,13 +12,13 @@
 
     <div id="header">
       <div id="challenge">
-        <span id="username" class="badge badge-dark">{{ username }}</span> <strong>'s Challenge</strong>
+        <span id="username" class="badge badge-dark">{{ userid }}</span> <strong>'s Challenge</strong>
       </div>
       <div id="timeClock">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li id="timeLeft" class="breadcrumb-item active" aria-current="page">{{ time_left }} <Strong>Left</Strong></li>
-            <li id="timeEnd" class="breadcrumb-item active" aria-current="page">{{ end_time }}</li>
+            <li id="timeLeft" class="breadcrumb-item active" aria-current="page">{{ print_time_left }} <Strong>Left</Strong></li>
+            <li id="timeEnd" class="breadcrumb-item active" aria-current="page">{{ print_end_time }}</li>
           </ol>
         </nav>
       </div>
@@ -32,6 +32,10 @@
     </div>
 
     <div id="userGoals">
+      <div id="moneySaved">
+        <span class="badge badge-pill badge-light">
+        </span>Saved: ₩ {{saved_money}}
+      </div>
       <div id="miniGoals">
         <div class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">

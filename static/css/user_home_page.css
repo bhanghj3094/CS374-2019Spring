@@ -86,6 +86,9 @@ nav ol {
   margin: 20px 0px;
   /* minigoal center, edit button to the right */
 }
+#moneySaved {
+  font-size: 15px;
+}
 #miniGoals {
   display: flex;
   flex-direction: column;

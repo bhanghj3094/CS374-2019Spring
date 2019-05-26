@@ -14,10 +14,10 @@ new Vue({
       spent_per: "Day", // It is empty at first.
       spent_money_ms: 0, // It is empty at first.
       saved_money: "", // It is empty at first.
+      image: '',
+      report_text: "",
+      report: [],
     }
-  },
-  methods: {
-
   },
   created() {
     if(this.spent_per == "Day")
@@ -93,6 +93,41 @@ new Vue({
 
       // format countdown string + set tag value
       document.getElementById("tiles").innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes + "</span><span>" + seconds + "</span>";
+    },
+    onFileChange: function(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length)
+        return;
+      this.createImage(files[0]);
+    },
+    createImage: function(file) {
+      var image = new Image();
+      var reader = new FileReader();
+
+      reader.onload = (e) => {
+        this.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function (e) {
+      this.image = '';
+    },
+    vaildReport: function () {
+      if (!this.image){
+        alert('Please attach image!');
+        return false;
+      }
+      else {
+        alert('Report Success!');
+        return true;
+      }
+    },
+    submitReport: function (e){
+      if (this.vaildReport()){
+        this.report.push({'image': this.image, 'text': this.report_text});
+        this.image = '';
+        this.report_text = "";
+      }
     },
   },
 });

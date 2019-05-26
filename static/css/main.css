@@ -59,6 +59,18 @@
     height: 490px;
 }
 
+.btn-log {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.btn-key  {
+    position:absolute;
+    top: 0px;
+    right: 70px;
+}
+
 #numOfUsersSection {
     display: flex;
     flex-direction: column;

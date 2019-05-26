@@ -3,7 +3,7 @@ new Vue({
   name: "shared_page_vue",
   data() {
     return {
-      username: "HyoungJo", // It is empty at first.
+      userid: "HyoungJo", // It is empty at first.
       time_left: "", // It is empty at first.
       print_end_time: "", // It is empty at first.
       start_time: new Date("2019-05-10T09:00:00"), // It is empty at first.

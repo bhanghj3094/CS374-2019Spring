@@ -10,9 +10,9 @@ new Vue({
         isSelectable: true,
         logs:[],
         selects:[
-            { name: '가위', value: 'scissor'},
-            { name: '바위', value: 'rock'},
-            { name: '보', value: 'paper'},
+            { name: 'Scissor', value: 'scissor'},
+            { name: 'Rock', value: 'rock'},
+            { name: 'Paper', value: 'paper'},
         ]
     },
     computed: {
@@ -49,12 +49,12 @@ new Vue({
         lifeOfMe: function(newVal) {
             if(newVal === 0){
                 // 게임을 종료
-                this.endGame('안타깝네요. 당신이 패배하였습니다.')
+                this.endGame('Sorry, you fail to acquire a token.')
             }
         },
         lifeOfCom: function(newVal) {
             if(newVal === 0){
-                this.endGame('축하드립니다. 당신이 승리하였습니다.')
+                this.endGame('Congratulations! You have acquired a token!')
             }
         }
     },
@@ -63,7 +63,7 @@ new Vue({
             // 버튼이 보이지 않음
             this.isSelectable = false
             if(this.myChoice === null){
-                alert('가위 바위 보 중 하나를 선택해주세요.')
+                alert('Make a choice!')
                 this.isSelectable = true
             } else {
                 let countDown = setInterval(()=> {
@@ -113,13 +113,14 @@ new Vue({
         endGame: function (msg) {
             setTimeout(() => {
                 confirm(msg)
+                location.href='../../templates/shared_page';
                 this.lifeOfMe = 3
                 this.lifeOfCom = 3
                 this.myChoice = null
                 this.comChoice = null
                 this.winner = null
                 this.logs =[]
-            }, 500)
+            }, 1)
         }
     }
 })

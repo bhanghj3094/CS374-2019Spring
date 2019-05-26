@@ -16,7 +16,16 @@ new Vue({
       saved_money: "", // It is empty at first.
       image: '',
       report_text: "",
-      report: [],
+      reports: [],
+      cheeringMessage: '',
+      cheeringFriendName: '',
+      cheeringMessageList: [],
+      pokingFriendName: '',
+      pokingList: [],
+      bettingSide: '',
+      bettingFriendName: '',
+      bettingAmount: '',
+      bettingList: [],
     }
   },
   created() {
@@ -124,10 +133,43 @@ new Vue({
     },
     submitReport: function (e){
       if (this.vaildReport()){
-        this.report.push({'image': this.image, 'text': this.report_text});
+        this.reports.push({'image': this.image, 'text': this.report_text});
         this.image = '';
         this.report_text = "";
       }
     },
+    sendCheeringMessage: function(e) {
+      if (this.cheeringMessage is null) {
+        alert("Please fill in the message");
+      }
+      if (this.cheeringFriendName is null) {
+        this.cheeringFriendName = 'friendNoName';
+      }
+      this.cheeringMessageList.push({'cheeringMessage': this.cheeringMessage, 'cheeringFriendName': this.cheeringFriendName});
+    },
+    onPoking: function(e) {
+      if (this.pokingFriendName is null) {
+        alert("Please fill in your name!");
+        return;
+      }
+      if (this.pokingList includes this.pokingFriendName) {
+        this.pokingList[this.pokingFriendName] += 1;
+      } else {
+        this.pokingList.push({'pokingFriendName': this.pokingFriendName, 'numberOfPoking': 1});
+      }
+    },
+    onBetting: function(e) {
+      if (this.bettingSide or this.bettingFriendName or this.bettingAmount is null) {
+        alert("Please fill all the information, and choose which side to bet");
+        return;
+      }
+      if (this.bettingList includes this.bettingFriendName) {
+        this.bettingList[this.bettingFriendName] += this.bettingAmount;
+      } else {
+        this.bettingList.push({'bettingSide': this.bettingSide,
+                               'bettingFriendName': this.bettingFriendName,
+                               'bettingAmount': this.bettingAmount});
+      }
+    }
   },
 });

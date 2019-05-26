@@ -1,3 +1,4 @@
+$('#report_popup').modal('show');
 
 new Vue({
   el: "#userHomeBodyWrapper",
@@ -41,6 +42,9 @@ new Vue({
       spent_money_ms: 0, // It is empty at first.
       saved_money: "", // It is empty at first.
       num_of_tokens: 2, // tokens for soft_failure
+      reports: [
+        { 'image': '../static/img/rock.jpg', 'massege': "bye bye!"}
+      ],
     };
   },
   created() {
@@ -62,6 +66,7 @@ new Vue({
   },
   methods: {
     getTimeStamp: function(date) {
+      console.log("getTimeStamp");
       var s =
         this.leadingZeros(date.getFullYear(), 4) + '-' +
         this.leadingZeros(date.getMonth() + 1, 2) + '-' +

@@ -11,30 +11,35 @@
   <div id="userHomeBodyWrapper">
 
     <div id="header">
-        <div id="challenge">
-            <span id="username" class="badge badge-dark">{{ userid }}</span> <strong>'s Challenge</strong>
-        </div>
-        <div id="timeClock">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li id="timeLeft" class="breadcrumb-item active" aria-current="page">{{ print_time_left }} <Strong>Left</Strong></li>
-                    <li id="timeEnd" class="breadcrumb-item active" aria-current="page">{{ print_end_time }}</li>
-                </ol>
-            </nav>
+      <button type="button" class="btn btn-light" onClick="location.href='main'">
+        <i class="fas fa-home"></i>
+        <span>Main Page</span>
+      </button>
+      <div id="challenge">
+        {{ userid }}'s &nbsp; <span>Challenge</span>
       </div>
-        <button id="edit" onClick="location.href='challenge_set_up'" type="button" class="btn btn-light">
-            Edit
-            <i class="fas fa-cog"></i>
-        </button>
+      <button id="edit" onClick="location.href='challenge_set_up'" type="button" class="btn btn-light">
+        EDIT
+        <i class="fas fa-cog"></i>
+      </button>
+    </div>
+
+    <div id="timer">
       <div id="progressBarWrapper">
         <div id="progressBar">
-          <div id="dynamic" class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+          <div id="dynamic" class="progress-bar progress-bar-success active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
             <span id="current-progress"></span>
           </div>
         </div>
       </div>
-
-
+      <div id="dependency_timeEnd_wrapper">
+        <div id="dependency">
+          Cut-off: Alcohol <i class="fas fa-beer"></i>
+        </div>
+        <div id="timeEnd">
+          Due Date: {{ print_end_time }}
+        </div>
+      </div>
     </div>
 
     <div id="userGoals">
@@ -46,13 +51,13 @@
         <div class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              {{ user_goals[0] }}
+              {{user_goals[0]}}
             </div>
             <div class="carousel-item">
-              {{ user_goals[1] }}
+              {{user_goals[1]}}
             </div>
             <div class="carousel-item">
-              {{ user_goals[2] }}
+              {{user_goals[2]}}
             </div>
           </div>
           <ol class="carousel-indicators">
@@ -70,53 +75,81 @@
           </a>
         </div>
       </div>
-
     </div>
 
-    <div id="sharingToSNS">
-      <button type="button" onClick="location.href='shared_page'"
-              id="buttonToSharingPage" class="btn btn btn-secondary">
-        <div>Go To Shared Page!</div>
-        <small>check out what your friends did</small>
-      </button>
+    <div id="buttonsSection">
       <button id="showSharingModal" type="button" data-toggle="modal" data-target="#sharingModal"
               class="btn btn btn-primary">Share on SNS</button>
-    </div>
-    <div id="sharingModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">New Post</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div id="chooseSharingFeature" class="dropdown">
-              <label for="dropdownMenuButton" class="col-form-label-lg">Feature for sharing:</label>
-              <button id="dropdownMenuButton" class="btn btn-secondary dropdown-toggle" type="button"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ dropdownText }}
+      <button id="goToSharingPage" type="button" onClick="location.href='shared_page'"
+              class="btn btn btn-secondary">Go To Shared Page!</button>
+      <button id="softFailure" type="button" data-toggle="modal" data-target="#softFailureModal"
+              class="btn btn-secondary">Really want to chill today?</button>
+      <div id="sharingModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">New Post</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
               </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <button class="dropdown-item" v-on:click="changeDropdown('None')">None</button>
-                <button class="dropdown-item" v-on:click="changeDropdown('Pokings')">Pokings</button>
-                <button class="dropdown-item" v-on:click="changeDropdown('Bettings')">Bettings</button>
-                <button class="dropdown-item" v-on:click="changeDropdown('Posters')">Posters</button>
-              </div>
             </div>
-            <form>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="message-text"></textarea>
+            <div class="modal-body">
+              <div id="chooseSharingFeature" class="dropdown">
+                <label for="dropdownMenuButton" class="col-form-label-lg">Feature for sharing:</label>
+                <button id="dropdownMenuButton" class="btn btn-secondary dropdown-toggle" type="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ dropdownText }}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <button class="dropdown-item" v-on:click="changeDropdown('None')">None</button>
+                  <button class="dropdown-item" v-on:click="changeDropdown('Pokings')">Pokings</button>
+                  <button class="dropdown-item" v-on:click="changeDropdown('Bettings')">Bettings</button>
+                  <button class="dropdown-item" v-on:click="changeDropdown('Posters')">Posters</button>
+                </div>
               </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Share</button>
+              <form>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Share</button>
+            </div>
           </div>
         </div>
+      </div>
+      <div class="modal fade" id="softFailureModal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Earn your token!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              "This action will bring you to a rock-scissor-paper game against a computer. This computer never lost in last 10 years. Give it a shot and if you manage to win, a token for a day-off will be given to you!"
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" onClick="location.href='rock_scissor_paper'">Go</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="buttonExplanation">
+      <div id="underShowSharingModal" class="buttonNotes">
+
+      </div>
+      <div id="underGoToSharingPage" class="buttonNotes">
+        check out what your friends did
+      </div>
+      <div id="underSoftFailure" class="buttonNotes">
+        get token for a day off
       </div>
     </div>
 
@@ -153,34 +186,21 @@
       </div>
     </div>
 
-    <div id="softFailure">
-      <button type="button" data-toggle="modal" data-target="#softFailureModal"
-              class="btn btn-secondary" id="buttonToSoftFailurePage">
-          <div>Really want to chill today?</div>
-        <small>get token for a day off</small>
-      </button>
-      <div class="modal fade" id="softFailureModal" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Earn your token!</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-<!--              Your Tokens: {{ num_of_tokens }}-->
-<!--              <br />-->
-              "This action will bring you to a rock-scissor-paper game against a computer. This computer never lost in last 10 years. Give it a shot and if you manage to win, a token for a day-off will be given to you!"
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onClick="location.href='rock_scissor_paper'">Go</button>
-            </div>
-          </div>
-        </div>
+    <div id="reports">
+      <div id="reportTitle">
+        Reports!
+      </div>
+      <div id="reportMessageList">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="reportImage">{{ reports[0]['reportImage'] }}</div>
+            <div class="reportMessage">{{ reports[0]['reportMessage'] }}</div>
+          </li>
+        </ul>
       </div>
     </div>
+
+    <div id="footer"></div>
 
   </div>
   <script src="../static/lib/jquery-3.3.1.min.js"></script>

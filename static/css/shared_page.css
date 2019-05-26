@@ -3,6 +3,12 @@
   margin: 0;
   padding: 0;
 }
+
+@font-face {
+  font-family: BigNoodleTitling;
+  src: url("../lib/big_noodle_titling.ttf");
+}
+
 #sharedPageBodyWrapper {
   display: flex;
   flex-direction: column;
@@ -11,10 +17,7 @@
 body {
   font-size: 0.9rem !important;
   font-weight: 300 !important;
-
-  background-color: #f8f3ed !important;
 }
-
 
 /* ====== Header ====== */
 #header {
@@ -23,13 +26,19 @@ body {
   justify-content: space-around;
   align-items: center;
 
-  margin: 20px 0px;
+  margin-top: 20px;
 }
-#challenge :not(span) {
-  font-size: 20px;
+#challenge {
+  display: flex;
+  align-self: center;
+
+  font-size: 70px;
+  font-family: BigNoodleTitling;
+  text-shadow: rgba(86, 86, 86, 0.6) 0 3px;
+  color: #272727;
 }
 #challenge > span {
-  font-size: 40px;
+  color: #F74C4C;
 }
 #uploadReportImage {
   display: flex;
@@ -39,6 +48,9 @@ body {
 #modalUploadButton {
   margin-left: 10px;
   font-size: 12px;
+}
+#reportButton {
+  width: 123px;
 }
 
 
@@ -123,9 +135,6 @@ body {
 .progress-bar {
   background-color: #F74C4C !important;
   font-size: 0.6rem !important;
-}
-.progress-bar-striped {
-  background-size: 2rem 2rem !important;
 }
 #dependency_timeEnd_wrapper {
   display: flex;

@@ -12,11 +12,11 @@
 
     <div id="header">
       <button type="button" class="btn btn-light" onClick="location.href='main'">
-        <i class="fas fa-home" style="font-size: 20px"></i>
-        <span style="font-size: 20px">Main Page</span>
+        <i class="fas fa-home"></i>
+        <span>Main Page</span>
       </button>
       <div id="challenge">
-        <span id="username" class="badge badge-dark">{{ username }}</span> <strong>'s Challenge</strong>
+        {{ userid }}'s &nbsp; <span>Challenge</span>
       </div>
       <button id="reportButton" type="button" data-toggle="modal" data-target="#reportModal"
               class="btn btn-danger" >REPORT</button>
@@ -67,7 +67,7 @@
       </div>
       <div id="progressBarWrapper">
         <div id="progressBar">
-          <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+          <div id="dynamic" class="progress-bar progress-bar-success active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
             <span id="current-progress"></span>
           </div>
         </div>

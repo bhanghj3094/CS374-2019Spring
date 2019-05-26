@@ -1,4 +1,3 @@
-
 new Vue({
   el: "#userHomeBodyWrapper",
   name: "user_home_page_vue",
@@ -25,8 +24,12 @@ new Vue({
       dropdownText: "None", // It needs to share on SNS
       user_goals: ["0.1 iPad", "12 Americanos", "0.01 Paris Trip"], // It is empty at first.
       cheerings: [
-        { 'message': 'You Can Do This!', 'friendName': 'userID1234'},
-        { 'message': 'Only three more days to go!', 'friendName': 'userID5678'}
+        { 'message': 'You Can Do This!', 'friendName': 'userID1234' },
+        { 'message': 'Only three more days to go!', 'friendName': 'userID5678' },
+      ],
+      reports: [
+        { 'reportImage': 'NONE', 'reportMessage': 'Great job so far!' },
+        { 'reportImage': 'Oh no', 'reportMessage': 'I saw you in Guno!' },
       ],
       spent_money: 10000, // It is empty at first.
       spent_per: "Day", // It is empty at first.

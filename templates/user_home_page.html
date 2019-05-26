@@ -105,16 +105,11 @@
                 <button class="dropdown-item" v-on:click="changeDropdown('Posters')">Posters</button>
               </div>
             </div>
-            <form>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="message-text"></textarea>
-              </div>
-            </form>
           </div>
           <div class="modal-footer">
+            <button type="button" class="btn btn-primary" v-on:click="shareOnFacebook()">Facebook</button>
+            <button type="button" class="btn btn-primary" v-on:click="shareOnTwitter()">Twitter</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Share</button>
           </div>
         </div>
       </div>

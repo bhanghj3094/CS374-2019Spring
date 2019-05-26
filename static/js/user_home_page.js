@@ -16,6 +16,14 @@ new Vue({
         { 'message': 'Only three more days to go!', 'friendName': 'userID5678'},
       ],*/
       userid: "HyoungJo", // It is empty at first.
+      postUrl: "http://54.180.181.191:5000/shared_page",
+      postText: [
+        { 'theme': 'None', 'message': 'Check your '+this.userid+' challenge'},
+        { 'theme': 'Pokings', 'message': 'Poke for ' +this.userid},
+        { 'theme': 'Bettings', 'message': 'Bet on '+this.userid},
+        { 'theme': 'Posters', 'message': 'Do you wonder ' +this.userid + 'future?'},
+      ],
+      postingText: 'Check your '+this.userid+' challenge',
       time_left: "", // It is empty at first.
       print_time_left: "", // It is empty at first.
       print_end_time: "", // It is empty at first.
@@ -119,23 +127,28 @@ new Vue({
     },
     changeDropdown: function (content) {
       this.dropdownText = content;
+      this.postingText = this.postText.find(function(element) {
+        return element.theme == content;
+      })['message'];
       // already run
     },
-    tickClockTimer: function () {
-      // subtract one second from time_left.
-      this.time_left = current-1;
-    },
-    shareOnSNS: function (feature_for_sharing) {
-      axios.post("server~")
+    shareOnFacebook: function () {
+      var url = "http://www.facebook.com/sharer.php?u=" + encodeURIComponent(this.postUrl) + "&t=" + encodeURIComponent( this.postingText );
+      window.open(url, 600, 450);
+      /*axios.post("server~")
         .then(res => {
           // Check res.status is 200
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err));*/
+    },
+    shareOnTwitter: function () {
+      var url = "http://twitter.com/intent/tweet?text=" + encodeURIComponent( this.postingText ) + "&url=" + encodeURIComponent(this.postUrl);
+		  window.open(url, 600, 450);
     },
     soft_failure: function (tokens) {
 
       // random redirect!
-      location.href='../../templates/rock_scissor_paper.html';
+      location.href='../../templates/rock_scissor_paper';
     }
 
   },

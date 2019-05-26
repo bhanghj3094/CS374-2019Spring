@@ -10,9 +10,9 @@ new Vue({
         isSelectable: true,
         logs:[],
         selects:[
-            { name: '가위', value: 'scissor'},
-            { name: '바위', value: 'rock'},
-            { name: '보', value: 'paper'},
+            { name: 'Scissor', value: 'scissor'},
+            { name: 'Rock', value: 'rock'},
+            { name: 'Paper', value: 'paper'},
         ]
     },
     computed: {
@@ -113,7 +113,7 @@ new Vue({
         endGame: function (msg) {
             setTimeout(() => {
                 confirm(msg)
-                location.href='../../templates/rock_scissor_paper';
+                location.href='../../templates/shared_page';
                 this.lifeOfMe = 3
                 this.lifeOfCom = 3
                 this.myChoice = null

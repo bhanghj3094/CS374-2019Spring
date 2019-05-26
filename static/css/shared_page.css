@@ -227,17 +227,11 @@ img {
   align-self: center;
 
   width: 900px;
-  height: 600px;
+  height: 450px;
   margin-top: 60px;
   padding: 40px 100px;
 
   background-color: #eff0f1;
-}
-#betting {
-  height: 400px;
-}
-#betting {
-  height: 600px;
 }
 #poke {
   display: flex;

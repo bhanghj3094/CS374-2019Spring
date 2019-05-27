@@ -32,9 +32,9 @@ new Vue({
     watch: {
         count: function (newVal) {
             if(newVal === 0){
-                // 컴퓨터가 가위바위보를 선택하는 
+                // 컴퓨터가 가위바위보를 선택하는
                 this.selectCom()
-                
+
                 // 가위바위보 승패 결정 & 몫을 차감
                 this.whoIsWin()
 
@@ -107,13 +107,13 @@ new Vue({
                 messege: `You: ${this.myChoice}, Computer: ${this.comChoice}`,
                 winner: this.winner
             }
-            
+
             this.logs.unshift(log)
         },
         endGame: function (msg) {
             setTimeout(() => {
                 confirm(msg)
-                location.href='../../templates/shared_page';
+                location.href='../templates/user_home_page';
                 this.lifeOfMe = 3
                 this.lifeOfCom = 3
                 this.myChoice = null

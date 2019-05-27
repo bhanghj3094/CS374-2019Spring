@@ -206,7 +206,7 @@ img {
 
   width: 900px;
   margin-top: 60px;
-  padding: 40px 110px;
+  padding: 40px 100px;
 
   background-color: #eff0f1;
 }
@@ -221,26 +221,17 @@ img {
 
 
 /* ====== Poking, Betting ====== */
-#poking, #betting, #poster {
+#poking, #betting {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   align-self: center;
 
   width: 900px;
-  height: 300px;
-  margin-top: 80px;
-  padding: 40px 110px;
+  height: 450px;
+  margin-top: 60px;
+  padding: 40px 100px;
 
   background-color: #eff0f1;
-}
-#pokingBoard, #bettingBoard {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-
-  position: relative;
-  overflow: auto;
 }
 #poke {
   display: flex;
@@ -248,11 +239,17 @@ img {
   justify-content: space-around;
   align-items: center;
 }
+#poke > div {
+  font-size: 25px;
+}
 #bet {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+#bet > div {
+  font-size: 25px;
 }
 #pokingInput, #bettingInput > div {
   display: flex;
@@ -260,12 +257,35 @@ img {
   justify-content: center;
 }
 #pokingFriendName, #bettingFriendName {
-  width: 150px;
+  width: 400px;
 }
+#pokingBoard {
+  height: 400px;
+  overflow: scroll;
 
-#succeedTable, #failureTable {
-  width: 200px;
-  margin-right: 10px;
+  margin-top: 40px;
+}
+#bettingBoard {
+  height: 350px;
+  margin-top: 40px;
+}
+#bettingBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.bettingSideLabel {
+  width: 100px;
+  text-align: center;
+}
+#betting_dynamic_wrapper {
+  width: 474.73px;
+  background-color: white;
+}
+#betting_dynamic {
+  color: white;
+  background-color: #F74C4C;
+  text-align: center;
 }
 
 

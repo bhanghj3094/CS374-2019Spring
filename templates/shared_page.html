@@ -9,7 +9,6 @@
 </head>
 <body>
   <div id="sharedPageBodyWrapper">
-
     <div id="header">
       <button type="button" class="btn btn-light" onClick="location.href='main'">
         <i class="fas fa-home"></i>
@@ -20,7 +19,7 @@
       </div>
       <button id="reportButton" type="button" data-toggle="modal" data-target="#reportModal"
               class="btn btn-danger" >REPORT</button>
-      <div id="reportModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div id="reportModal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -127,6 +126,17 @@
     </div>
 
     <div id="poking">
+      <div id="poke">
+        <div>It's your turn!</div>
+        <small>poke and remind your friend</small>
+        <br />
+        <div id="pokingInput">
+          <input id="pokingFriendName" type="text" class="form-control" placeholder="name">
+          <button class="btn btn-warning">
+            Poke <i class="far fa-hand-point-right"></i>
+          </button>
+        </div>
+      </div>
       <div id="pokingBoard">
         <table class="table">
           <thead>
@@ -175,6 +185,7 @@
       <div id="bet">
         <div>Bet on {{ userid }}!</div>
         <small>show trust in your friend</small>
+        <br />
         <div id="bettingInput">
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <input id="bettingAmount" type="text" class="form-control" v-model="bettingAmount" placeholder="how much?">
@@ -191,6 +202,21 @@
               Bet <i class="fas fa-money-check-alt"></i>
             </button>
           </div>
+        </div>
+      </div>
+      <div id="bettingBoard">
+        <div id="bettingBar">
+          <div class="bettingSideLabel">Will Succeed</div>
+          <div id="betting_dynamic_wrapper">
+            <div id="betting_dynamic">
+              <div class="progress-bar active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="bettingSideLabel">Will Fail</div>
+        </div>
+        <div id="bettingFriends">
+          <div id="friendBidOnSucceed"></div>
+          <div id="friendBidOnFailing"></div>
         </div>
       </div>
     </div>

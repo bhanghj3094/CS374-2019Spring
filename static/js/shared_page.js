@@ -46,6 +46,8 @@ new Vue({
       {'bettingAmount': 26000, 'bettingFriendName': 'James'},
       {'bettingAmount': 21000, 'bettingFriendName': 'James'},
     ],
+    succeed_bets_money: 35000,
+    failure_bets_money: 57000,
   },
   created() {
     if(this.spent_per == "Day")
@@ -65,6 +67,7 @@ new Vue({
     this.interval = setInterval(() => {
         this.timerCount(this.start,this.end);
     }, 1000);
+    this.changeBettingBar();
   },
   methods: {
     getUser: function() {
@@ -262,6 +265,13 @@ new Vue({
         }
       }
       this.betView();
+    },
+    changeBettingBar: function () {
+      var succeed_bets_money_percent = this.succeed_bets_money / (this.succeed_bets_money + this.failure_bets_money) * 100;
+      $("#betting_dynamic")
+      .css("width", succeed_bets_money_percent + "%")
+      .attr("aria-valuenow", succeed_bets_money_percent)
+      .text(succeed_bets_money_percent.toFixed(4) + "%");
     },
     goalView: function(){
       this.user_goals = [];

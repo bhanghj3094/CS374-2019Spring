@@ -82,12 +82,47 @@
       </div>
     </div>
 
+    <div id="userGoals">
+      <div id="moneySaved">
+        <span class="badge badge-pill badge-light">
+        </span>Saved: ₩ {{print_saved_money}}
+      </div>
+      <div id="miniGoals">
+        <div class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              {{user_goals[0]}}
+            </div>
+            <div class="carousel-item">
+              {{user_goals[1]}}
+            </div>
+            <div class="carousel-item">
+              {{user_goals[2]}}
+            </div>
+          </div>
+          <ol class="carousel-indicators">
+            <li data-target=".carousel" data-slide-to="0" class="active"></li>
+            <li data-target=".carousel" data-slide-to="1"></li>
+            <li data-target=".carousel" data-slide-to="2"></li>
+          </ol>
+          <a class="carousel-control-prev" href=".carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href=".carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <div id="cheeringMessage">
-      <form id="cheeringMessageInput">
-        <input type="text" class="form-control" placeholder="Leave a message for your friend">
-        <input id="cheeringFriendName" type="text" class="form-control" placeholder="name (optional)">
-        <button class="btn btn-warning">Send</button>
-      </form>
+      <div id="cheeringMessageInput">
+        <input type="text" class="form-control" v-model="cheeringMessage" placeholder="Leave a message for your friend">
+        <input type="text" id="cheeringFriendName" class="form-control" v-model="cheeringFriendName" placeholder="name (optional)">
+        <button v-on:click="sendCheeringMessage()" class="btn btn-success">Send</button>
+      </div>
     </div>
 
     <div id="poking">
@@ -111,47 +146,59 @@
               <th scope="col">Friend Name</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>34</td>
-              <td>Jason</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>26</td>
-              <td>Christina</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>20</td>
-              <td>Hyeongshin</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>14</td>
-              <td>Jinwon</td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>9</td>
-              <td>Suyeon</td>
-            </tr>
+          <tbody calss="pokeTable" id="pokeTable">
           </tbody>
         </table>
+      </div>
+      <div id="poke">
+        <div>It's your turn!</div>
+        <small>poke and remind your friend</small>
+        <br />
+        <div id="pokingInput">
+          <input id="pokingFriendName" type="text" class="form-control" v-model="pokingFriendName" placeholder="name">
+          <button v-on:click="onPoking()" class="btn btn-warning">
+            Poke <i class="far fa-hand-point-right"></i>
+          </button>
+        </div>
       </div>
     </div>
 
     <div id="betting">
+      <div id="bettingBoard" class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table id="succeedTable" class="table">
+          <thead>
+            <tr><th scope="col">Succeed</th></tr>
+            <tr><th scope="col">Total: ₩35,000 </th></tr>
+          </thead>
+          <tbody id="succeedBet" class="succedBet">
+          </tbody>
+        </table>
+        <table id="failureTable" class="table">
+          <thead>
+            <tr><th scope="col">Failure</th></tr>
+            <tr><th scope="col">Total: ₩57,000 </th></tr>
+          </thead>
+          <tbody id="failureBet" class="succedBet">
+          </tbody>
+        </table>
+      </div>
       <div id="bet">
         <div>Bet on {{ userid }}!</div>
         <small>show trust in your friend</small>
         <br />
         <div id="bettingInput">
-          <input id="bettingAmount" type="text" class="form-control" placeholder="how much?">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <input id="bettingAmount" type="text" class="form-control" v-model="bettingAmount" placeholder="how much?">
+            <label class="btn btn-danger">
+              <input type="radio" name="bettingSideRadio" value="betOnSucceed" v-model="bettingSide" id="betOnSucceed">Will Succeed
+            </label>
+            <label class="btn btn-danger">
+              <input type="radio" name="bettingSideRadio" value="betOnFail" v-model="bettingSide"  id="betOnFail">Will Fail
+            </label>
+          </div>
           <div>
-            <input id="bettingFriendName" type="text" class="form-control" placeholder="name">
-            <button class="btn btn-warning">
+            <input id="bettingFriendName" type="text" class="form-control" v-model="bettingFriendName" placeholder="name">
+            <button v-on:click="onBetting()" class="btn btn-warning">
               Bet <i class="fas fa-money-check-alt"></i>
             </button>
           </div>

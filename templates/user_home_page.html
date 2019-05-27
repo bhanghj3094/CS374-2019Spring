@@ -5,11 +5,30 @@
   <title>Promiss: Cut-off your dependency!</title>
     <link rel="stylesheet" href="../static/lib/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/user_home_page.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
-  <div id="userHomeBodyWrapper">
+  <div id="report_popup" class="modal" role="dialog" aria-hidden="true">
+    <div id="defaultModal" class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" data-dismiss="modal" class="close">
+            <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+          <div id="report_image">
+            {{ reports[0]['image'] }}
+          </div>
+          <div id="report_text">
+            {{ reports[0]['message'] }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div id="userHomeBodyWrapper">
     <div id="header">
       <button type="button" class="btn btn-light" onClick="location.href='main'">
         <i class="fas fa-home"></i>

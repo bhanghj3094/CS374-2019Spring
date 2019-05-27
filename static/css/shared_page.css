@@ -284,11 +284,16 @@ img {
 }
 #betting_dynamic {
   color: white;
+  height: 25px;
   background-color: #F74C4C;
   text-align: center;
 }
-
-
+#bettingFriends {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
 /* ====== Footer ====== */
 #footer {
   display: flex;

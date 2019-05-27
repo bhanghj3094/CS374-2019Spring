@@ -267,11 +267,9 @@ new Vue({
       this.betView();
     },
     changeBettingBar: function () {
+      var elem = document.getElementById("betting_dynamic");
       var succeed_bets_money_percent = this.succeed_bets_money / (this.succeed_bets_money + this.failure_bets_money) * 100;
-      $("#betting_dynamic")
-      .css("width", succeed_bets_money_percent + "%")
-      .attr("aria-valuenow", succeed_bets_money_percent)
-      .text(succeed_bets_money_percent.toFixed(4) + "%");
+      elem.style.width = succeed_bets_money_percent + '%';
     },
     goalView: function(){
       this.user_goals = [];

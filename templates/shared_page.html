@@ -86,7 +86,7 @@
     <div id="userGoals">
       <div id="moneySaved">
         <span class="badge badge-pill badge-light">
-        </span>Saved: ₩ {{saved_money}}
+        </span>Saved: ₩ {{print_saved_money}}
       </div>
       <div id="miniGoals">
         <div class="carousel slide" data-ride="carousel">
@@ -136,32 +136,7 @@
               <th scope="col">Friend Name</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>34</td>
-              <td>Jason</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>26</td>
-              <td>Christina</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>20</td>
-              <td>Hyeongshin</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>14</td>
-              <td>Jinwon</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>9</td>
-              <td>Suyeon</td>
-            </tr>
+          <tbody calss="pokeTable" id="pokeTable">
           </tbody>
         </table>
       </div>
@@ -185,15 +160,7 @@
             <tr><th scope="col">Succeed</th></tr>
             <tr><th scope="col">Total: ₩35,000 </th></tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>₩20,000</td>
-              <td>Simon</td>
-            </tr>
-            <tr>
-              <td>₩15,000</td>
-              <td>James</td>
-            </tr>
+          <tbody id="succeedBet" class="succedBet">
           </tbody>
         </table>
         <table id="failureTable" class="table">
@@ -201,33 +168,21 @@
             <tr><th scope="col">Failure</th></tr>
             <tr><th scope="col">Total: ₩57,000 </th></tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>₩10,000</td>
-              <td>Simon</td>
-            </tr>
-            <tr>
-              <td>₩26,000</td>
-              <td>James</td>
-            </tr>
-            <tr>
-              <td>₩21,000</td>
-              <td>James</td>
-            </tr>
+          <tbody id="failureBet" class="succedBet">
           </tbody>
         </table>
       </div>
       <div id="bet">
-        <div>Bet on {{ username }}!</div>
+        <div>Bet on {{ userid }}!</div>
         <small>show trust in your friend</small>
         <div id="bettingInput">
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <input id="bettingAmount" type="text" class="form-control" v-model="bettingAmount" placeholder="how much?">
             <label class="btn btn-danger">
-              <input type="radio" name="bettingSideRadio" id="betOnSucceed">Will Succeed
+              <input type="radio" name="bettingSideRadio" value="betOnSucceed" v-model="bettingSide" id="betOnSucceed">Will Succeed
             </label>
             <label class="btn btn-danger">
-              <input type="radio" name="bettingSideRadio" id="betOnFail">Will Fail
+              <input type="radio" name="bettingSideRadio" value="betOnFail" v-model="bettingSide"  id="betOnFail">Will Fail
             </label>
           </div>
           <div>

@@ -1,39 +1,50 @@
+//$('#report_popup').modal('show');
 
 new Vue({
   el: "#userHomeBodyWrapper",
   name: "user_home_page_vue",
-  data: function() {
-    return{
-      /*userid: "",
-      user: {},
-      time_left: "",
-      end_time: "",
-      complete_percentage: "",
-      dropdownText: "None",
-      user_goals: [],
-      cheerings: [
-        { 'message': 'You Can Do This!', 'friendName': 'userID1234'},
-        { 'message': 'Only three more days to go!', 'friendName': 'userID5678'},
-      ],*/
-      userid: "HyoungJo", // It is empty at first.
-      time_left: "", // It is empty at first.
-      print_time_left: "", // It is empty at first.
-      print_end_time: "", // It is empty at first.
-      start_time: new Date("2019-05-10T09:00:00"), // It is empty at first.
-      end_time: new Date("2019-06-01T11:00:00"), // It is empty at first.
-      complete_percentage: 0,
-      dropdownText: "None", // It needs to share on SNS
-      user_goals: ["0.1 iPad", "12 Americanos", "0.01 Paris Trip"], // It is empty at first.
-      cheerings: [
-        { 'message': 'You Can Do This!', 'friendName': 'userID1234'},
-        { 'message': 'Only three more days to go!', 'friendName': 'userID5678'}
-      ],
-      spent_money: 10000, // It is empty at first.
-      spent_per: "Day", // It is empty at first.
-      spent_money_ms: 0, // It is empty at first.
-      saved_money: "", // It is empty at first.
-      num_of_tokens: 2, // tokens for soft_failure
-    };
+  data: {
+    /*userid: "",
+    user: {},
+    time_left: "",
+    end_time: "",
+    complete_percentage: "",
+    dropdownText: "None",
+    user_goals: [],
+    cheerings: [
+      { 'message': 'You Can Do This!', 'friendName': 'userID1234'},
+      { 'message': 'Only three more days to go!', 'friendName': 'userID5678'},
+    ],*/
+    userid: "HyoungJo", // It is empty at first.
+    postUrl: "http://54.180.181.191:5000/shared_page",
+    postText: [
+      { 'theme': 'None', 'message': 'Check your '+this.userid+' challenge'},
+      { 'theme': 'Pokings', 'message': 'Poke for ' +this.userid},
+      { 'theme': 'Bettings', 'message': 'Bet on '+this.userid},
+      { 'theme': 'Posters', 'message': 'Do you wonder ' +this.userid + 'future?'},
+    ],
+    postingText: 'Check your '+this.userid+' challenge',
+    time_left: "", // It is empty at first.
+    print_time_left: "", // It is empty at first.
+    print_end_time: "", // It is empty at first.
+    start_time: new Date("2019-05-10T09:00:00"), // It is empty at first.
+    end_time: new Date("2019-06-01T11:00:00"), // It is empty at first.
+    complete_percentage: 0,
+    dropdownText: "None", // It needs to share on SNS
+    user_goals: ["0.1 iPad", "12 Americanos", "0.01 Paris Trip"], // It is empty at first.
+    cheerings: [
+      { 'message': 'You Can Do This!', 'friendName': 'userID1234' },
+      { 'message': 'Only three more days to go!', 'friendName': 'userID5678' },
+    ],
+    user_reports: [
+      { 'reportImage': 'NONE', 'reportMessage': 'Great job so far!' },
+      { 'reportImage': 'Oh no', 'reportMessage': 'I saw you in Guno!' },
+    ],
+    spent_money: 10000, // It is empty at first.
+    spent_per: "Day", // It is empty at first.
+    spent_money_ms: 0, // It is empty at first.
+    saved_money: "", // It is empty at first.
+    num_of_tokens: 2, // tokens for soft_failure
   },
   created() {
     if(this.spent_per == "Day")
@@ -54,6 +65,7 @@ new Vue({
   },
   methods: {
     getTimeStamp: function(date) {
+      console.log("getTimeStamp");
       var s =
         this.leadingZeros(date.getFullYear(), 4) + '-' +
         this.leadingZeros(date.getMonth() + 1, 2) + '-' +
@@ -119,23 +131,31 @@ new Vue({
     },
     changeDropdown: function (content) {
       this.dropdownText = content;
+      this.postingText = this.postText.find(function(element) {
+        return element.theme == content;
+      })['message'];
       // already run
     },
-    tickClockTimer: function () {
-      // subtract one second from time_left.
-      this.time_left = current-1;
-    },
-    shareOnSNS: function (feature_for_sharing) {
-      axios.post("server~")
+    shareOnFacebook: function () {
+      var url = "http://www.facebook.com/sharer.php?u=" + encodeURIComponent(this.postUrl) + "&t=" + encodeURIComponent( this.postingText );
+      window.open(url, 600, 450);
+      /*axios.post("server~")
         .then(res => {
           // Check res.status is 200
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err));*/
+    },
+    shareOnTwitter: function () {
+      var url = "http://twitter.com/intent/tweet?text=" + encodeURIComponent( this.postingText ) + "&url=" + encodeURIComponent(this.postUrl);
+		  window.open(url, 600, 450);
     },
     soft_failure: function (tokens) {
 
       // random redirect!
-      location.href='../../templates/rock_scissor_paper.html';
+      location.href='../../templates/rock_scissor_paper';
+    },
+    popup_modal_close: function () {
+      $('#report_popup').modal('hide');
     }
 
   },

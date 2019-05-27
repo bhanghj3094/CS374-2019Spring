@@ -12,11 +12,11 @@
 
     <div id="header">
       <button type="button" class="btn btn-light" onClick="location.href='main'">
-        <i class="fas fa-home" style="font-size: 20px"></i>
-        <span style="font-size: 20px">Main Page</span>
+        <i class="fas fa-home"></i>
+        <span>Main Page</span>
       </button>
       <div id="challenge">
-        <span id="username" class="badge badge-dark">{{ username }}</span> <strong>'s Challenge</strong>
+        {{ userid }}'s &nbsp; <span>Challenge</span>
       </div>
       <button id="reportButton" type="button" data-toggle="modal" data-target="#reportModal"
               class="btn btn-danger" >REPORT</button>
@@ -31,24 +31,25 @@
             </div>
             <div class="modal-body">
               <div id="uploadReportImage">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="imageToReport" aria-describedby="inputGroupFileAddon04">
-                  <label class="custom-file-label" for="imageToReport">Choose file</label>
+                <div v-if="!image" class="ifImageExists">
+                  <h4>Select an image</h4>
+                  <input type="file" @change="onFileChange" accept="image/*">
                 </div>
-                <button id="modalUploadButton" class="btn btn-success">
-                  Upload
-                </button>
+                <div v-else align="center" class="ifImageExists">
+                  <img :src="image" />
+                  <button class="btn btn-secondary" @click="removeImage">Remove image</button>
+                </div>
               </div>
               <form>
                 <div class="form-group">
                   <label for="message-text" class="col-form-label">Message to your friend:</label>
-                  <textarea class="form-control" id="message-text"></textarea>
+                  <textarea class="form-control" id="message-text" v-model="report_text" placeholder="Bye Bye!"></textarea>
                 </div>
               </form>
             </div>
             <div class="modal-footer">
+              <button type="button" class="btn btn-danger" v-on:click="submitReport()">Report</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-danger">Report</button>
             </div>
           </div>
         </div>
@@ -67,7 +68,7 @@
       </div>
       <div id="progressBarWrapper">
         <div id="progressBar">
-          <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+          <div id="dynamic" class="progress-bar progress-bar-success active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
             <span id="current-progress"></span>
           </div>
         </div>
@@ -85,7 +86,7 @@
     <div id="userGoals">
       <div id="moneySaved">
         <span class="badge badge-pill badge-light">
-        </span>Saved: ₩ {{saved_money}}
+        </span>Saved: ₩ {{print_saved_money}}
       </div>
       <div id="miniGoals">
         <div class="carousel slide" data-ride="carousel">
@@ -118,14 +119,25 @@
     </div>
 
     <div id="cheeringMessage">
-      <form id="cheeringMessageInput">
-        <input type="text" class="form-control" placeholder="Leave a message for your friend">
-        <input id="cheeringFriendName" type="text" class="form-control" placeholder="name (optional)">
-        <button class="btn btn-success">Send</button>
-      </form>
+      <div id="cheeringMessageInput">
+        <input type="text" class="form-control" v-model="cheeringMessage" placeholder="Leave a message for your friend">
+        <input type="text" id="cheeringFriendName" class="form-control" v-model="cheeringFriendName" placeholder="name (optional)">
+        <button v-on:click="sendCheeringMessage()" class="btn btn-success">Send</button>
+      </div>
     </div>
 
     <div id="poking">
+      <div id="poke">
+        <div>It's your turn!</div>
+        <small>poke and remind your friend</small>
+        <br />
+        <div id="pokingInput">
+          <input id="pokingFriendName" type="text" class="form-control" v-model="pokingFriendName" placeholder="name">
+          <button v-on:click="onPoking()" class="btn btn-warning">
+            Poke <i class="far fa-hand-point-right"></i>
+          </button>
+        </div>
+      </div>
       <div id="pokingBoard">
         <table class="table">
           <thead>
@@ -135,110 +147,77 @@
               <th scope="col">Friend Name</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>34</td>
-              <td>Jason</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>26</td>
-              <td>Christina</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>20</td>
-              <td>Hyeongshin</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>14</td>
-              <td>Jinwon</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>9</td>
-              <td>Suyeon</td>
-            </tr>
+          <tbody calss="pokeTable" id="pokeTable">
           </tbody>
         </table>
-      </div>
-      <div id="poke">
-        <div>It's your turn!</div>
-        <small>poke and remind your friend</small>
-        <br />
-        <div id="pokingInput">
-          <input id="pokingFriendName" type="text" class="form-control" placeholder="name">
-          <button class="btn btn-warning">
-            Poke <i class="far fa-hand-point-right"></i>
-          </button>
-        </div>
       </div>
     </div>
 
     <div id="betting">
-      <div id="bettingBoard" class="table-wrapper-scroll-y my-custom-scrollbar">
-        <table id="succeedTable" class="table">
-          <thead>
-            <tr><th scope="col">Succeed</th></tr>
-            <tr><th scope="col">Total: ₩35,000 </th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>₩20,000</td>
-              <td>Simon</td>
-            </tr>
-            <tr>
-              <td>₩15,000</td>
-              <td>James</td>
-            </tr>
-          </tbody>
-        </table>
-        <table id="failureTable" class="table">
-          <thead>
-            <tr><th scope="col">Failure</th></tr>
-            <tr><th scope="col">Total: ₩57,000 </th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>₩10,000</td>
-              <td>Simon</td>
-            </tr>
-            <tr>
-              <td>₩26,000</td>
-              <td>James</td>
-            </tr>
-            <tr>
-              <td>₩21,000</td>
-              <td>James</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
       <div id="bet">
-        <div>Bet on {{ username }}!</div>
+        <div>Bet on {{ userid }}!</div>
         <small>show trust in your friend</small>
         <div id="bettingInput">
-          <input id="bettingAmount" type="text" class="form-control" placeholder="how much?">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <input id="bettingAmount" type="text" class="form-control" v-model="bettingAmount" placeholder="how much?">
+            <label class="btn btn-danger">
+              <input type="radio" name="bettingSideRadio" value="betOnSucceed" v-model="bettingSide" id="betOnSucceed">Will Succeed
+            </label>
+            <label class="btn btn-danger">
+              <input type="radio" name="bettingSideRadio" value="betOnFail" v-model="bettingSide"  id="betOnFail">Will Fail
+            </label>
+          </div>
           <div>
-            <input id="bettingFriendName" type="text" class="form-control" placeholder="name">
-            <button class="btn btn-warning">
+            <input id="bettingFriendName" type="text" class="form-control" v-model="bettingFriendName" placeholder="name">
+            <button v-on:click="onBetting()" class="btn btn-warning">
               Bet <i class="fas fa-money-check-alt"></i>
             </button>
           </div>
         </div>
       </div>
-    </div>
+      <div id="bettingBoard">
+        <div id="bettingBar">
+          <div class="bettingSideLabel">Will Succeed</div>
+          <div id="betting_dynamic_wrapper">
+            <div id="betting_dynamic">
+              <div class="progress-bar active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="bettingSideLabel">Will Fail</div>
+        </div>
+        <div id="bettingFriends">
+          <div calss="bettingBottomLabel" id="friendBidOnSucceed">{{succeed_bets_money}}</div>
+          <div calss="bettingBottomLabel" id="friendBidOnFailing">{{failure_bets_money}}</div>
 
-    <div id="poster">
-      position for poster
+<!--
+          <table id="succeedTable" class="table">
+            <thead>
+              <tr>
+                <th scope="col">Money</th>
+                <th scope="col">Friend Name</th>
+              </tr>
+            </thead>
+            <tbody id="succeedBet">
+            </tbody>
+          </table>
+          <table id="failureTable" class="table">
+            <thead>
+              <tr>
+                <th scope="col">Money</th>
+                <th scope="col">Friend Name</th>
+              </tr>
+            </thead>
+            <tbody id="failureBet">
+            </tbody>-->
+          </table>
+        </div>
+      </div>
     </div>
-
 
     <div id="footer"></div>
 
   </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

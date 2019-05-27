@@ -1,94 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/lib/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/enroll.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../static/lib/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/enroll.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
 
 <div id="title">
-    <span style="color: #272727">Create</span>
-    <span style="color: #F74C4C"> Challenge</span>
+  <span style="color: #272727">Create</span>
+  <span style="color: #F74C4C"> Challenge</span>
 </div>
 <div id="subtitle">
-    Fill in your Information
+  Fill in your Information
 </div>
 
 <br>
 
 <div id="enroll" class="container">
-    <form id="enroll_form" action="/send_user_info" method="post">
-    <div class="row justify-content-center">
-        <div class="col-5">
+  <form id="enroll_form" action="/send_user_info" method="post">
+  <div class="row justify-content-center">
+    <div class="col-5">
 
-            <label class="first-label" for="form_id">
-                ID
-            </label>
-            <br>
-            <label class="second-label" for="form_id">
-                Your challenge will be posted at www.promiss.com/[YourID]
-            </label>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="form-id"><i class="far fa-user"></i></span>
-                </div>
-                <input type="text" class="form-control" v-model="user.user_id" placeholder="only english and number, under 20 characters" aria-label="form_id" aria-describedby="form_id">
-            </div>
-            <br>
-
-            <label class="first-label" for="form-password">
-                Password
-            </label>
-            <br>
-            <label class="second-label" for="form-id">
-                For change your challenge, you need password.
-            </label>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="form_password"><i class="fas fa-lock"></i></span>
-                </div>
-                <input type="text" class="form-control" v-model="user.user_password" placeholder="Do not use password that you commonly used." aria-label="form_password" aria-describedby="form_password">
-            </div>
-            <br>
-
-            <label class="first-label" for="form_verify_password">
-                Re-Type Password
-            </label>
-            <br>
-            <label class="second-label" for="form_verify_password">
-                For password verification.
-            </label>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="form_verify_password"><i class="fas fa-lock"></i></span>
-                </div>
-                <input type="text" class="form-control" v-model="user.user_password_verify" placeholder="type password that you wrote at upper form." aria-label="form_verify_password" aria-describedby="form_verify_password">
-            </div>
-            <br>
-
-            <label class="first-label" for="form_email">
-                E-mail
-            </label>
-            <br>
-            <label class="second-label" for="form_email">
-                Optional, for finding password.
-            </label>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="form_email"><i class="far fa-envelope"></i></span>
-                </div>
-                <input type="text" class="form-control" v-model="user.user_email" placeholder="promiss@kaist.ac.kr" aria-label="form_email" aria-describedby="form_email">
-            </div>
-            <br>
-
-            <div align="center">
-                <button id="next" type="button" class="btn btn-lg btn-primary" v-on:click="sendUserInfo">N E X T</button>
-            </div>
+      <label class="first-label" for="form_id">
+        ID
+      </label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="form_id"><i class="far fa-user"></i></span>
         </div>
+        <input type="text" class="form-control" name="id" v-model="user.id" placeholder="only english and number, under 20 characters" aria-label="form_id" aria-describedby="form_id">
+      </div>
+      <br>
+
+      <label class="first-label" for="form_nickname">
+        Nickname
+      </label>
+      <br>
+      <label class="second-label" for="form_nickname">
+        Your challenge will be posted at www.promiss.com/[YourNickname]
+      </label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="form_nickname"><i class="far fa-user"></i></span>
+        </div>
+        <input type="text" class="form-control" name="nickname" v-model="user.nickname" placeholder="only english and number, under 20 characters" aria-label="form_nickname" aria-describedby="form_nickname">
+      </div>
+      <br>
+
+      <label class="first-label" for="form_password">
+        Password
+      </label>
+      <br>
+      <label class="second-label" for="form_password">
+        For change your challenge, you need password.
+      </label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="form_password"><i class="fas fa-lock"></i></span>
+        </div>
+        <input type="text" class="form-control" name="password" v-model="user.password" placeholder="Do not use password that you commonly used." aria-label="form_password" aria-describedby="form_password">
+      </div>
+      <br>
+
+      <label class="first-label" for="form_password_verify">
+        Re-Type Password
+      </label>
+      <br>
+      <label class="second-label" for="form_password_verify">
+        For password verification.
+      </label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="form_password_verify"><i class="fas fa-lock"></i></span>
+        </div>
+        <input type="text" class="form-control" v-model="user.password_verify" placeholder="type password that you wrote at upper form." aria-label="form_verify_password" aria-describedby="form_verify_password">
+      </div>
+      <br>
+
+      <label class="first-label" for="form_email">
+        E-mail
+      </label>
+      <br>
+      <label class="second-label" for="form_email">
+        Optional, for finding password.
+      </label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="form_email"><i class="far fa-envelope"></i></span>
+        </div>
+        <input type="text" class="form-control" name="email" v-model="user.email" placeholder="promiss@kaist.ac.kr" aria-label="form_email" aria-describedby="form_email">
+      </div>
+      <br>
+
+      <div align="center">
+        <button id="next" type="button" class="btn btn-lg btn-primary" v-on:click="sendUserInfo">N E X T</button>
+      </div>
     </div>
-    </form>
+  </div>
+  </form>
 </div>
 
 

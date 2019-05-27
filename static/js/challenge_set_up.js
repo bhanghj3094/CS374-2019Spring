@@ -3,7 +3,7 @@ new Vue({
     data: {
         user: {},
         mode: '',
-        dependency: 'alcohol',
+        selected: 'alcohol',
         spent_money: 10000,
         spent_per: 'day'
     },
@@ -22,10 +22,15 @@ new Vue({
     },
     methods: {
         getImage: function() {
-            $('#dependency_image').attr('src', '../static/img/' + this.dependency + '.png')
+            $('#selected_dependency').attr('src', '../static/img/' + this.selected + '.png')
         },
         getUser: function() {
             this.$http.post('/json/user/' + this.user['id'])
+        },
+        selectDependency: function(dependency){
+            this.selected = dependency;
+            this.getImage();
+            $('#select_dependency_modal').modal('hide')
         },
         createUser: function () {
             this.$http.post('/create_user', this.user)

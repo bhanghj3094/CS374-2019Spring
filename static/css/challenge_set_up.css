@@ -32,7 +32,7 @@ input {
     margin-bottom: 100px;
 }
 
-#dependency {
+.dependency {
     border: none;
     background-color: #FEF9E5;
     padding-top: 10px;
@@ -40,7 +40,7 @@ input {
     margin: 20px;
 }
 
-#dependency_image {
+.dependency_image {
     border: none;
     width: 150px;
     height: 150px;
@@ -148,6 +148,10 @@ input {
     font-size: 25px;
 }
 
+.modal-title {
+    font-family: BigNoodleTitling;
+    font-size: 30px;
+}
 
 .mini_goal {
     width: 70%;

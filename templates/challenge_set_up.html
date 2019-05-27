@@ -15,7 +15,7 @@
 <br><br>
 <div id="subtitle">
     To cut-off
-    <button id="dependency" type="button"><img id="dependency_image" src="#"></button>
+    <button class="dependency" type="button" data-toggle="modal" data-target="#select_dependency_modal"><img class="dependency_image" id="selected_dependency" src="#"></button>
     Dependency
 </div>
 
@@ -23,8 +23,10 @@
 
     <div id="select_date">
         <p class="first-label">How Long?</p>
-        <button id="select_date_button" type="button" data-toggle="modal" data-target="#selectDateModal"
-                class="btn btn-secondary select_button">Select Date<i id="select_date_button_icon" class="fas fa-external-link-alt"></i></button>
+        <button id="select_date_button" type="button" data-toggle="modal" data-target="#select_date_modal"
+                class="btn btn-secondary select_button">
+          <span id="selected_date">Select Date</span>
+          <i id="select_date_button_icon" class="fas fa-external-link-alt"></i></button>
     </div>
     <div id="how_much_spent">
         <p class="first-label">How Much Spent for {{ dependency }}</p>
@@ -51,32 +53,57 @@
 
     </div>
     <p align="center"><button id="create_challenge" class="btn btn-secondary" onclick="location.href='user_home_page'" >Create Challenge</button></p>
-</div>
 
-<!--select Date Modal-->
-<div id="selectDateModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Select End Date</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-labe="close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="calendar">
-          <div class="form-group">
-            <input type="datetime-local" class="form-control" name="end-date" placeholder="Enter Start Date">
-          </div>
+  <!--select Dependency Modal-->
+  <div id="select_dependency_modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-title"> Select What you want to Cut-off</span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <div class="modal-body" align="center">
+          <button class="dependency" v-on:click="selectDependency('alcohol')"><img class="dependency_image" src="../static/img/alcohol.png"></button>
+          <button class="dependency" v-on:click="selectDependency('cigarette')"><img class="dependency_image" src="../static/img/cigarette.png"></button>
+          <button class="dependency" v-on:click="selectDependency('caffeine')"><img class="dependency_image" src="../static/img/caffeine.png"></button>
+        </div>
       </div>
     </div>
   </div>
+
+  <!--select Date Modal-->
+  <div id="select_date_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Select End Date</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-labe="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="calendar">
+            <div class="form-group">
+              <input type="datetime-local" class="form-control" name="end-date" placeholder="Enter Start Date">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+
+
+
+
 
 <script src="../static/lib/jquery-3.3.1.min.js"></script>
 <script src="../static/lib/popper.min.js"></script>

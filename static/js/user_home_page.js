@@ -1,4 +1,4 @@
-//$('#report_popup').modal('show');
+$('#popup').modal('show');
 
 new Vue({
   el: "#userHomeBodyWrapper",
@@ -31,7 +31,12 @@ new Vue({
     end_time: new Date("2019-06-01T11:00:00"), // It is empty at first.
     complete_percentage: 0,
     dropdownText: "None", // It needs to share on SNS
-    user_goals: ["0.1 iPad", "12 Americanos", "0.01 Paris Trip"], // It is empty at first.
+    user_goals: [],
+    goals: [
+      {'name': 'iPad', 'money': 1000000},
+      {'name': 'Americano', 'money': 5000},
+      {'name': 'Paris Trip', 'money': 4000000},
+    ], // It is empty at first.
     cheerings: [
       { 'message': 'You Can Do This!', 'friendName': 'userID1234' },
       { 'message': 'Only three more days to go!', 'friendName': 'userID5678' },
@@ -56,6 +61,7 @@ new Vue({
   },
   mounted() {
     // this.getUser();
+    this.goalView();
     this.print_end_time = this.getTimeStamp(this.end_time);
     // Update the count down every 1 second
     this.timerCount();
@@ -87,7 +93,8 @@ new Vue({
     },
     moneyCount: function(start,now){
       var calc_saved_money = (now - start) * this.spent_money_ms;
-      this.saved_money = this.numberWithCommas(calc_saved_money.toFixed(2));
+      this.saved_money = calc_saved_money.toFixed(2);
+      this.print_saved_money = this.numberWithCommas(this.saved_money);
     },
     numberWithCommas: function(x){
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -103,6 +110,7 @@ new Vue({
         this.print_time_left = this.calcTime(this.time_left);
         var percent = (now - start) / (end - start) * 100;
         this.complete_percentage = percent.toFixed(4);
+        this.goalView();
         this.moneyCount(start,now);
         $("#dynamic")
         .css("width", this.complete_percentage + "%")
@@ -154,10 +162,13 @@ new Vue({
       // random redirect!
       location.href='../../templates/rock_scissor_paper';
     },
-    popup_modal_close: function () {
-      $('#report_popup').modal('hide');
-    }
-
+    goalView: function(){
+      this.user_goals = [];
+      for (var i = 0 ; i < this.goals.length ; i++){
+        var value = (this.saved_money/this.goals[i]['money']).toFixed(2);
+        this.user_goals.push( value + " " + this.goals[i]['name']);
+      }
+    },
   },
   /*
   created() {

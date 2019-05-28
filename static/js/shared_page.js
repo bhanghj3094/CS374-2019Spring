@@ -181,11 +181,15 @@ new Vue({
     sendCheeringMessage: function(e) {
       if (!this.cheeringMessage) {
         alert("Please fill in the message");
+        return;
       }
       if (!this.cheeringFriendName) {
         this.cheeringFriendName = 'friendNoName';
       }
       this.cheeringMessageList.push({'cheeringMessage': this.cheeringMessage, 'cheeringFriendName': this.cheeringFriendName});
+      this.cheeringMessage = "";
+      this.cheeringFriendName = "";
+      alert("Message Successfully Sent!");
     },
     pokeView: function() {
         var poke = $('#pokeTable');
@@ -216,6 +220,8 @@ new Vue({
           return b['numberOfPoking'] - a['numberOfPoking'];
       });
       this.pokeView();
+      this.pokingFriendName = "";
+      alert("You Poked Your Friend!");
     },
     betView: function() {
         var sb = $('#succeedBet');
@@ -242,7 +248,8 @@ new Vue({
         }
     },
     onBetting: function(e) {
-      if (!(this.bettingSide && this.bettingFriendName && this.bettingAmount)) {
+      console.log(this.bettingSide);
+      if (!(this.bettingFriendName && this.bettingAmount)) {        //this.bettingSide &&
         alert("Please fill all the information, and choose which side to bet");
         return;
       }
@@ -256,8 +263,13 @@ new Vue({
         }
       }
       else {
+        alert("Bet Successful: " + this.bettingAmount + " won to " + this.bettingFriendName + "!!");
+        this.bettingFriendName = "";
+        this.bettingAmount = "";
+        return;
+
         var index = this.failureBettingList.findIndex(x => x.bettingFriendName == this.bettingFriendName);
-        if (index != this.bettingList.length) {
+        if (index != this.failureBettingList.length) {
           this.failureBettingList[index]['bettingAmount'] += this.bettingAmount;
         } else {
           this.failureBettingList.push({'bettingFriendName': this.bettingFriendName,
@@ -265,6 +277,10 @@ new Vue({
         }
       }
       this.betView();
+
+      this.bettingFriendName = "";
+      this.bettingAmount = "";
+      this.bettingSide = "";
     },
     changeBettingBar: function () {
       var elem = document.getElementById("betting_dynamic");

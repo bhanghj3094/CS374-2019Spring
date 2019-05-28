@@ -35,9 +35,9 @@ input::placeholder {
 }
 
 .first-label {
-	  font-family: BigNoodleTitling;
-	  font-size: 30px;
-    line-height: 100%;
+	font-family: BigNoodleTitling;
+	font-size: 30px;
+    line-height: 50%;
 }
 
 .second-label {

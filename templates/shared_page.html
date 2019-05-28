@@ -87,7 +87,7 @@
       <div id="cheeringMessageInput">
         <input type="text" class="form-control" v-model="cheeringMessage" placeholder="Leave a message for your friend">
         <input type="text" id="cheeringFriendName" class="form-control" v-model="cheeringFriendName" placeholder="name (optional)">
-        <button v-on:click="sendCheeringMessage()" class="btn btn-success">Send</button>
+        <button v-on:click="sendCheeringMessage()" class="btn btn-warning">Send</button>
       </div>
     </div>
 
@@ -98,7 +98,7 @@
         <br />
         <div id="pokingInput">
           <input id="pokingFriendName" type="text" class="form-control" v-model="pokingFriendName" placeholder="name">
-          <button v-on:click="onPoking()" class="btn btn-warning">
+          <button id="pokingButton" v-on:click="onPoking()" class="btn btn-warning">
             Poke <i class="far fa-hand-point-right"></i>
           </button>
         </div>
@@ -122,19 +122,20 @@
       <div id="bet">
         <div>Bet on {{ userid }}!</div>
         <small>show trust in your friend</small>
+        <br />
         <div id="bettingInput">
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <input id="bettingAmount" type="text" class="form-control" v-model="bettingAmount" placeholder="how much?">
-            <label class="btn btn-danger">
-              <input type="radio" name="bettingSideRadio" value="betOnSucceed" v-model="bettingSide" id="betOnSucceed">Will Succeed
+            <label for="betOnSucceed" class="btn btn-danger">
+              <input type="radio" value="WillSucceed" v-model="bettingSide" id="betOnSucceed">Will Succeed
             </label>
-            <label class="btn btn-danger">
-              <input type="radio" name="bettingSideRadio" value="betOnFail" v-model="bettingSide"  id="betOnFail">Will Fail
+            <label for="betOnFail" class="btn btn-danger">
+              <input type="radio" value="WillSucceed" v-model="bettingSide" id="betOnFail">Will Fail
             </label>
           </div>
           <div>
             <input id="bettingFriendName" type="text" class="form-control" v-model="bettingFriendName" placeholder="name">
-            <button v-on:click="onBetting()" class="btn btn-warning">
+            <button id="bettingButton" v-on:click="onBetting()" class="btn btn-warning">
               Bet <i class="fas fa-money-check-alt"></i>
             </button>
           </div>
@@ -153,8 +154,11 @@
         <div id="bettingFriends">
           <div calss="bettingBottomLabel" id="friendBidOnSucceed">{{succeed_bets_money}}</div>
           <div calss="bettingBottomLabel" id="friendBidOnFailing">{{failure_bets_money}}</div>
+        </div>
+      </div>
+    </div>
 
-<!--
+    <!--
           <table id="succeedTable" class="table">
             <thead>
               <tr>
@@ -174,10 +178,6 @@
             </thead>
             <tbody id="failureBet">
             </tbody>-->
-          </table>
-        </div>
-      </div>
-    </div>
 
     <div id="footer"></div>
 

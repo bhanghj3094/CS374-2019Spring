@@ -35,6 +35,12 @@ body {
   font-family: BigNoodleTitling;
 }
 
+/* ====== Pop-up ====== */
+
+#popup_title {
+  font-weight: bold;
+}
+
 
 /* ====== Header ====== */
 #header {

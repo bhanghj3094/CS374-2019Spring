@@ -113,7 +113,7 @@ new Vue({
         endGame: function (msg) {
             setTimeout(() => {
                 confirm(msg)
-                location.href='../templates/user_home_page';
+                location.href='../../templates/user_home_page';
                 this.lifeOfMe = 3
                 this.lifeOfCom = 3
                 this.myChoice = null

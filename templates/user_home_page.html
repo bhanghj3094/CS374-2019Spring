@@ -8,20 +8,25 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
-  <div id="report_popup" class="modal" role="dialog" aria-hidden="true">
+  <div id="popup" class="modal" role="dialog" aria-hidden="true">
     <div id="defaultModal" class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
          <div class="modal-header">
-          <button type="button" data-dismiss="modal" class="close" v-on:click ="popup_modal_close()">
+           <h5 class="modal-title" id="exampleModalLabel">New Update!</h5>
+           <button type="button" data-dismiss="modal" class="close" v-on:click ="popup_modal_close()">
             <span aria-hidden="true">&times;</span>
            </button>
         </div>
         <div class="modal-body">
-          <div id="report_image">
-            {{ user_reports[0]['reportImage'] }}
-          </div>
-          <div id="report_text">
-            {{ user_reports[0]['reportMessage'] }}
+          <div id="popup_report">
+            <div id="popup_title">Poke</div>
+            <div id="report_text">3 Pokes from Jinwon</div>
+            <div id="popup_title">Bet</div>
+            <div id="report_text">3 Peoples think that you will succeed</div>
+            <div id="report_text">5 Peoples think that you will fail</div>
+            <div id="popup_title">Report</div>
+            <!--<div id="report_image">None</div>-->
+            <div id="report_text">"Great job so far!"</div>
           </div>
         </div>
       </div>
@@ -63,7 +68,7 @@
     <div id="userGoals">
       <div id="moneySaved">
         <span class="badge badge-pill badge-light">
-        </span>Saved: ₩ {{saved_money}}
+        </span>Saved: ₩ {{print_saved_money}}
       </div>
       <div id="miniGoals">
         <div class="carousel slide" data-ride="carousel">

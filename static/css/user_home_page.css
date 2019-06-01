@@ -41,6 +41,22 @@ body {
   font-weight: bold;
 }
 
+#report_button {
+    text-align: center !important;
+    width: auto;
+    height: 50px;
+    margin: 30px auto;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 50px;
+    text-align: center;
+    background-color: #565656;
+    border: #565656;
+    font-family: BigNoodleTitling;
+    font-weight: bold;
+    background-position: center;
+}
 
 /* ====== Header ====== */
 #header {

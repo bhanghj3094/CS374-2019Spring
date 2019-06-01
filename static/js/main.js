@@ -2,14 +2,12 @@ new Vue ({
     el: '#main',
     data: {
         user: {},
-        temp: ""
     },
     mounted: function () {
-    }
-    ,
+    },
     methods: {
         validation: function (user){
-            if(((String)session.getAttribute("id"))==null){
+            if(!user['id']){
                 response.sendRedirect("login");
                 return false;
             } else {
@@ -22,6 +20,9 @@ new Vue ({
              if (this.validation(this.user)){
                  location.href='../../templates/user_home_page';
              }
+        },
+        enroll: function() {
+            location.href='../../templates/enroll';
         }
     }
 });

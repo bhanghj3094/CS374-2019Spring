@@ -32,37 +32,71 @@
     padding: 20px 15px;
     text-align: center;
 }
+.btn-primary {
+    text-align: center;
+    width: auto;
+    height: 50px;
+    margin: 30px auto;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 50px;
+    text-align: center;
+    background-color: #F74C4C;
+    border: #F74C4C;
+    font-family: BigNoodleTitling;
+    font-size: 30px;
+    background-position: center;
+}
 
-.btn-red {
+.btn-secondary {
+    text-align: center !important;
+    width: auto;
+    height: 50px;
+    margin: 30px auto;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 50px;
+    text-align: center;
+    background-color: #565656;
+    border: #565656;
+    font-family: BigNoodleTitling;
+    font-weight: bold;
+    background-position: center;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #F74C4C;
+    border-color: #F74C4C;
+}
+
+.common-btn {
     vertical-align: middle;
     border: #F74C4C;
-    background-color: #F74C4C;
     font-family: Helvetica;
     font-size: 20px;
     top: 50%;
     padding: 10px 50px;
     color: black;
     opacity: 0.85;
-    height: 490px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.btn-red {
+    background-color: #F74C4C;
 }
 
 .btn-white {
-    vertical-align: middle;
     background-color: white;
-    border: #F74C4C;
-    font-family: Helvetica;
-    font-size: 20px;
-    top: 50%;
-    padding: 10px 50px;
-    color: black;
-    opacity: 0.85;
-    height: 490px;
 }
 
 .btn-log {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 10px;
+    right: 10px;
 }
 
 .btn-key  {
@@ -71,45 +105,14 @@
     right: 70px;
 }
 
-#numOfUsersSection {
+
+#textSection {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    height: 350px;
-}
-
-.btn-button {
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    background-color: black;
-    opacity: 0.8;
-    -webkit-transition: all .35s;
-    -moz-transition: all .35s;
-    transition: all .35s;
-    border: #fff;
-    font-family: Helvetica;
-    font-size: 20px;
-    margin: 30px;
-    padding: 15px 30px;
-    color: #F74C4C;
-    background-position: center;
-}
-
-.btn-button:hover,
-.btn-button:focus,
-.btn-button.focus,
-.btn-button:active,
-.btn-button.active,
-.open > .dropdown-toggle.btn-button {
-    border-color: #F74C4C;
-    color: #272727;
-    background-color: #F74C4C;
-    opacity: 1;
-    font-weight: bold;
-    padding: 20px 35px;
+    height: 200px;
 }
 
 section {
@@ -151,4 +154,10 @@ hr {
 
 .usernumber{
     font-size: 70px
+}
+
+.image {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }

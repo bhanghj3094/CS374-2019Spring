@@ -9,11 +9,6 @@ new Vue({
     start_time: new Date("2019-05-20T09:00:00"), // It is empty at first.
     end_time: new Date("2019-06-18T23:59:59"), // It is empty at first.
     complete_percentage: 0,
-    spent_money: 10000, // It is empty at first.
-    spent_per: "Day", // It is empty at first.
-    spent_money_ms: 0, // It is empty at first.
-    saved_money: "", // It is empty at first.
-    print_saved_money: "",
     image: '',
     report_text: "",
     reports: [],
@@ -42,14 +37,6 @@ new Vue({
     ],
     succeed_bets_money: 35000,
     failure_bets_money: 57000,
-  },
-  created() {
-    if(this.spent_per == "Day")
-      this.spent_money_ms = this.spent_money / 86400000;
-    else if(this.spent_per == "Week")
-      this.spent_money_ms = this.spent_moeny / (86400000 * 7);
-    else if(this.spent_per == "Month")
-      this.spent_money_ms = this.spent_money / (86400000 * 7 * 30);
   },
   mounted() {
     this.pokeView();

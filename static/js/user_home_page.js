@@ -4,17 +4,7 @@ new Vue({
   el: "#userHomeBodyWrapper",
   name: "user_home_page_vue",
   data: {
-    /*userid: "",
     user: {},
-    time_left: "",
-    end_time: "",
-    complete_percentage: "",
-    dropdownText: "None",
-    user_goals: [],
-    cheerings: [
-      { 'message': 'You Can Do This!', 'friendName': 'userID1234'},
-      { 'message': 'Only three more days to go!', 'friendName': 'userID5678'},
-    ],*/
     userid: "HyoungJo", // It is empty at first.
     postUrl: "http://54.180.181.191:5000/shared_page",
     postText: [
@@ -27,8 +17,8 @@ new Vue({
     time_left: "", // It is empty at first.
     print_time_left: "", // It is empty at first.
     print_end_time: "", // It is empty at first.
-    start_time: new Date("2019-05-10T09:00:00"), // It is empty at first.
-    end_time: new Date("2019-06-01T11:00:00"), // It is empty at first.
+    start_time: new Date("2019-05-20T09:00:00"), // It is empty at first.
+    end_time: new Date("2019-06-18T23:59:59"), // It is empty at first.
     complete_percentage: 0,
     dropdownText: "None", // It needs to share on SNS
     user_goals: [],
@@ -46,6 +36,7 @@ new Vue({
       { 'reportImage': 'Oh no', 'reportMessage': 'I saw you in Guno!' },
     ],
     spent_money: 10000, // It is empty at first.
+    print_saved_money: 0,
     spent_per: "Day", // It is empty at first.
     spent_money_ms: 0, // It is empty at first.
     saved_money: "", // It is empty at first.
@@ -59,8 +50,11 @@ new Vue({
     else if(this.spent_per == "Month")
       this.spent_money_ms = this.spent_money / (86400000 * 7 * 30);
   },
-  mounted() {
-    // this.getUser();
+  mounted: function() {
+    /*this.getUser().then(function(response){
+      this.user = response.data;
+    });*/
+
     this.goalView();
     this.print_end_time = this.getTimeStamp(this.end_time);
     // Update the count down every 1 second
@@ -109,6 +103,7 @@ new Vue({
         this.time_left = end - now;
         this.print_time_left = this.calcTime(this.time_left);
         var percent = (now - start) / (end - start) * 100;
+        if (percent > 100)percent = 100;
         this.complete_percentage = percent.toFixed(4);
         this.goalView();
         this.moneyCount(start,now);
@@ -125,11 +120,8 @@ new Vue({
         this.seconds = Math.floor((dist % (1000 * 60)) / 1000);
         return this.days + " days " + this.hours + " h " + this.minutes + " m " + this.seconds + " s";
     },
-    /*getUser: function () {
-        this.$http.get('user_info').then(function (response) {
-            this.user = response.data;
-        });
-        init();
+    /*getUser: function() {
+        this.$http.get('/json/user/' + this.user['id'])
     },*/
     init: function () {
       this.userid = this.user["user_id"];
@@ -158,8 +150,6 @@ new Vue({
 		  window.open(url, 600, 450);
     },
     soft_failure: function (tokens) {
-
-      // random redirect!
       location.href='../../templates/rock_scissor_paper';
     },
     goalView: function(){

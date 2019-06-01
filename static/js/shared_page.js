@@ -6,15 +6,9 @@ new Vue({
     userid: "HyoungJo", // It is empty at first.
     time_left: "", // It is empty at first.
     print_end_time: "", // It is empty at first.
-    start_time: new Date("2019-05-10T09:00:00"), // It is empty at first.
-    end_time: new Date("2019-06-01T11:00:00"), // It is empty at first.
+    start_time: new Date("2019-05-20T09:00:00"), // It is empty at first.
+    end_time: new Date("2019-06-18T23:59:59"), // It is empty at first.
     complete_percentage: 0,
-    user_goals: [],
-    goals: [
-      {'name': 'iPad', 'money': 1000000},
-      {'name': 'Americano', 'money': 5000},
-      {'name': 'Paris Trip', 'money': 4000000},
-    ], // It is empty at first.
     spent_money: 10000, // It is empty at first.
     spent_per: "Day", // It is empty at first.
     spent_money_ms: 0, // It is empty at first.
@@ -60,7 +54,6 @@ new Vue({
   mounted() {
     this.pokeView();
     this.betView();
-    this.goalView();
     this.print_end_time = this.getTimeStamp(this.end_time);
     // Update the count down every 1 second
     this.timerCount();
@@ -79,7 +72,6 @@ new Vue({
       this.end_time = this.user["goal_date"];
       var percent = this.time_left / (this.user["goal_date"] - this.user["start_date"]);
       this.complete_percentage = percent * 100;
-      this.user_goals = [this.user["mini_goal_1"], this.user["mini_goal_2"], this.user["mini_goal_3"]];
     },
     updateUser: function () {
       this.$http.post('/update_user', this.user)
@@ -119,9 +111,9 @@ new Vue({
         // Find the distance between now an the count down date
         this.time_left = end - now;
         this.getCountdown();
-        this.goalView();
         this.moneyCount(start,now);
         var percent = (now - start) / (end - start) * 100;
+        if (percent > 100)percent = 100;
         this.complete_percentage = percent.toFixed(2);
         $("#dynamic")
         .css("width", this.complete_percentage + "%")
@@ -286,13 +278,6 @@ new Vue({
       var elem = document.getElementById("betting_dynamic");
       var succeed_bets_money_percent = this.succeed_bets_money / (this.succeed_bets_money + this.failure_bets_money) * 100;
       elem.style.width = succeed_bets_money_percent + '%';
-    },
-    goalView: function(){
-      this.user_goals = [];
-      for (var i = 0 ; i < this.goals.length ; i++){
-        var value = (this.saved_money/this.goals[i]['money']).toFixed(2);
-        this.user_goals.push( value + " " + this.goals[i]['name']);
-      }
     },
     numberWithCommas: function(x){
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

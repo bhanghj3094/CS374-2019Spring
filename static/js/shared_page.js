@@ -7,7 +7,7 @@ new Vue({
     time_left: "", // It is empty at first.
     print_end_time: "", // It is empty at first.
     start_time: new Date("2019-05-20T09:00:00"), // It is empty at first.
-    end_time: new Date("2019-06-18T23:59:59"), // It is empty at first.
+    end_time: new Date("2019-06-08T23:59:59"), // It is empty at first.
     complete_percentage: 0,
     image: '',
     report_text: "",
@@ -31,9 +31,9 @@ new Vue({
       {'bettingAmount': 15000, 'bettingFriendName': 'James'},
     ],
     failureBettingList: [
-      {'bettingAmount': 10000, 'bettingFriendName': 'Simon'},
       {'bettingAmount': 26000, 'bettingFriendName': 'James'},
       {'bettingAmount': 21000, 'bettingFriendName': 'James'},
+      {'bettingAmount': 10000, 'bettingFriendName': 'Simon'},
     ],
     succeed_bets_money: 35000,
     failure_bets_money: 57000,
@@ -227,36 +227,41 @@ new Vue({
         }
     },
     onBetting: function(e) {
-      console.log(this.bettingSide);
-      if (!(this.bettingFriendName && this.bettingAmount)) {        //this.bettingSide &&
+      if (!(this.bettingFriendName && this.bettingAmount && this.bettingSide)) {        //this.bettingSide &&
         alert("Please fill all the information, and choose which side to bet");
         return;
       }
-      if (this.bettingSide == 'betOnSucceed'){
+      if (this.bettingSide == 'WillSucceed'){
+        alert("Bet Successful: " + Number(this.bettingAmount) + " won to " + this.bettingFriendName + " will succeed!!");
+        this.succeed_bets_money += Number(this.bettingAmount);
         var index = this.succeedBettingList.findIndex(x => x.bettingFriendName == this.bettingFriendName);
-        if (index != this.succeedBettingList.length) {
+        if (index != -1) {
           this.succeedBettingList[index]['bettingAmount'] += this.bettingAmount;
         } else {
           this.succeedBettingList.push({'bettingFriendName': this.bettingFriendName,
                                         'bettingAmount': this.bettingAmount});
         }
+        this.succeedBettingList.sort(function(a, b) {
+            return b['bettingAmount'] - a['bettingAmount'];
+        });
       }
       else {
-        alert("Bet Successful: " + this.bettingAmount + " won to " + this.bettingFriendName + "!!");
-        this.bettingFriendName = "";
-        this.bettingAmount = "";
-        return;
+        alert("Bet Successful: " + Number(this.bettingAmount) + " won to " + this.bettingFriendName + " will fail!!");
+        this.failure_bets_money += Number(this.bettingAmount);
 
         var index = this.failureBettingList.findIndex(x => x.bettingFriendName == this.bettingFriendName);
-        if (index != this.failureBettingList.length) {
+        if (index != -1) {
           this.failureBettingList[index]['bettingAmount'] += this.bettingAmount;
         } else {
           this.failureBettingList.push({'bettingFriendName': this.bettingFriendName,
                                        'bettingAmount': this.bettingAmount});
         }
+        this.failureBettingList.sort(function(a, b) {
+            return b['bettingAmount'] - a['bettingAmount'];
+        });
       }
-      this.betView();
 
+      this.betView();
       this.bettingFriendName = "";
       this.bettingAmount = "";
       this.bettingSide = "";

@@ -112,7 +112,7 @@
               <th scope="col">Friend Name</th>
             </tr>
           </thead>
-          <tbody calss="pokeTable" id="pokeTable">
+          <tbody class="pokeTable" id="pokeTable">
           </tbody>
         </table>
       </div>
@@ -124,14 +124,16 @@
         <small>show trust in your friend</small>
         <br />
         <div id="bettingInput">
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <input id="bettingAmount" type="text" class="form-control" v-model="bettingAmount" placeholder="how much?">
-            <label for="betOnSucceed" class="btn btn-danger">
-              <input type="radio" value="WillSucceed" v-model="bettingSide" id="betOnSucceed">Will Succeed
-            </label>
-            <label for="betOnFail" class="btn btn-danger">
-              <input type="radio" value="WillSucceed" v-model="bettingSide" id="betOnFail">Will Fail
-            </label>
+          <div class="btn-group btn-group-toggle">
+            <input id="bettingAmount" type="number" class="form-control" v-model.number="bettingAmount" placeholder="how much?">
+            <div>
+              <label for="betOnSucceed" class="btn btn-danger">
+                <input type="radio" id="betOnSucceed" value="WillSucceed" v-model="bettingSide"> Will Succeed
+              </label>
+              <label for="betOnFail" class="btn btn-danger">
+                <input type="radio" id="betOnFail" value="WillFail" v-model="bettingSide"> Will Fail
+              </label>
+            </div>
           </div>
           <div>
             <input id="bettingFriendName" type="text" class="form-control" v-model="bettingFriendName" placeholder="name">
@@ -143,41 +145,50 @@
       </div>
       <div id="bettingBoard">
         <div id="bettingBar">
-          <div class="bettingSideLabel">Will Succeed</div>
-          <div id="betting_dynamic_wrapper">
-            <div id="betting_dynamic">
-              <div class="progress-bar active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+          <div class="bettingSideLabel" id="succeed" style="text-align:right;">Will Succeed</div>
+          <div>
+            <div id="betting_dynamic_wrapper">
+              <div id="betting_dynamic">
+                <div class="progress-bar active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+              </div>
+            </div>
+            <div id="betting_money_wrapper">
+              <div id="succeed">₩{{succeed_bets_money}}</div>
+              <div id="fail">₩{{failure_bets_money}}</div>
             </div>
           </div>
-          <div class="bettingSideLabel">Will Fail</div>
+          <div class="bettingSideLabel" id="fail">Will Fail</div>
         </div>
+        <!--
         <div id="bettingFriends">
-          <div calss="bettingBottomLabel" id="friendBidOnSucceed">{{succeed_bets_money}}</div>
-          <div calss="bettingBottomLabel" id="friendBidOnFailing">{{failure_bets_money}}</div>
+          <div id="succeedBettingList">
+            <table id="succeedTable" class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Money</th>
+                  <th scope="col">Friend Name</th>
+                </tr>
+              </thead>
+              <tbody id="succeedBet">
+              </tbody>
+            </table>
+          </div>
+          <div id="failureBettingList">
+            <table id="failureTable" class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Money</th>
+                  <th scope="col">Friend Name</th>
+                </tr>
+              </thead>
+              <tbody id="failureBet">
+              </tbody>
+            </table>
+          </div>
         </div>
+      -->
       </div>
     </div>
-
-    <!--
-          <table id="succeedTable" class="table">
-            <thead>
-              <tr>
-                <th scope="col">Money</th>
-                <th scope="col">Friend Name</th>
-              </tr>
-            </thead>
-            <tbody id="succeedBet">
-            </tbody>
-          </table>
-          <table id="failureTable" class="table">
-            <thead>
-              <tr>
-                <th scope="col">Money</th>
-                <th scope="col">Friend Name</th>
-              </tr>
-            </thead>
-            <tbody id="failureBet">
-            </tbody>-->
 
     <div id="footer"></div>
 

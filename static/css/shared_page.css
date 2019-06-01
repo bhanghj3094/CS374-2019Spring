@@ -158,7 +158,7 @@ img {
 }
 #dependency {
   color: darkorange;
-}s
+}
 
 
 /* ====== Cheering Message ====== */
@@ -254,13 +254,13 @@ img {
   text-align: center;
 }
 #betting_dynamic_wrapper {
-  width: 474.73px;
+  width: 475px;
   background-color: white;
 }
 #betting_dynamic {
   color: white;
   height: 25px;
-  background-color: #F74C4C;
+  background-color: #f75458;
   text-align: center;
 }
 #bettingFriends {

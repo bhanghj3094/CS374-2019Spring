@@ -18,7 +18,7 @@ new Vue({
     print_time_left: "", // It is empty at first.
     print_end_time: "", // It is empty at first.
     start_time: new Date("2019-05-20T09:00:00"), // It is empty at first.
-    end_time: new Date("2019-06-18T23:59:59"), // It is empty at first.
+    end_time: new Date("2019-06-08T23:59:59"), // It is empty at first.
     complete_percentage: 0,
     dropdownText: "None", // It needs to share on SNS
     user_goals: [],
@@ -28,8 +28,12 @@ new Vue({
       {'name': 'Paris Trip', 'money': 4000000},
     ], // It is empty at first.
     cheerings: [
-      { 'message': 'You Can Do This!', 'friendName': 'userID1234' },
-      { 'message': 'Only three more days to go!', 'friendName': 'userID5678' },
+      { 'message': 'You Can Do This!', 'friendName': 'David' },
+      { 'message': 'Only five more days to go!', 'friendName': 'Christina' },
+      { 'message': 'Cheer up!!', 'friendName': 'James' },
+      { 'message': 'Anything is possible', 'friendName': 'Scott' },
+      { 'message': 'Server Error', 'friendName': 'Elice' },
+      { 'message': 'Little more..', 'friendName': 'Susan' },
     ],
     user_reports: [
       { 'reportImage': 'NONE', 'reportMessage': 'Great job so far!' },

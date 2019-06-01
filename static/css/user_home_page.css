@@ -24,8 +24,8 @@ body {
   font-weight: 300 !important;
 }
 .btn-primary {
-    background-color: #F74C4C;
-    border: #F74C4C;
+    background-color: #f75458;
+    border: #f75458;
     font-family: BigNoodleTitling;
 }
 
@@ -61,7 +61,7 @@ body {
   color: #272727;
 }
 #challenge > span {
-  color: #F74C4C;
+  color: #f75458;
 }
 #uploadReportImage {
   display: flex;
@@ -98,7 +98,7 @@ body {
   height: 20px;
 }
 .progress-bar {
-  background-color: #F74C4C !important;
+  background-color: #f75458 !important;
   font-size: 0.8rem !important;
 }
 #dependency_timeEnd_wrapper {
@@ -248,7 +248,7 @@ body {
   align-items: center;
 
   width: 300px;
-  height: 300px;
+  height: 100px;
   font-weight: bold;
 }
 

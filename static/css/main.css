@@ -35,8 +35,8 @@
 
 .btn-red {
     vertical-align: middle;
-    border: #F74C4C;
-    background-color: #F74C4C;
+    border: #f75458;
+    background-color: #f75458;
     font-family: Helvetica;
     font-size: 20px;
     top: 50%;
@@ -49,7 +49,7 @@
 .btn-white {
     vertical-align: middle;
     background-color: white;
-    border: #F74C4C;
+    border: #f75458;
     font-family: Helvetica;
     font-size: 20px;
     top: 50%;
@@ -94,7 +94,7 @@
     font-size: 20px;
     margin: 30px;
     padding: 15px 30px;
-    color: #F74C4C;
+    color: #f75458;
     background-position: center;
 }
 
@@ -104,9 +104,9 @@
 .btn-button:active,
 .btn-button.active,
 .open > .dropdown-toggle.btn-button {
-    border-color: #F74C4C;
+    border-color: #f75458;
     color: #272727;
-    background-color: #F74C4C;
+    background-color: #f75458;
     opacity: 1;
     font-weight: bold;
     padding: 20px 35px;

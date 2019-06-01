@@ -77,6 +77,14 @@ input {
     right: 5px;
 }
 
+#date {
+    position: relative;
+    margin: 55px 0px 0px 30px;
+    padding: 10px 20px;
+    width: 300px;
+    font-size: 20px;
+}
+
 #how_much_spent {
     height: 220px;
     width: 100%;
@@ -104,7 +112,6 @@ input {
     font-family: BigNoodleTitling;
     font-size: 30px;
     background-color: #565656;
-    white-space:pre
 }
 
 #mini_goals {
@@ -123,6 +130,7 @@ input {
     font-size: 30px;
     background-color: #565656;
     align-self: center;
+    margin-bottom: 30px;
 }
 
 .first-label {

@@ -5,7 +5,8 @@ new Vue({
         mode: '',
         selected: 'alcohol',
         spent_money: 10000,
-        spent_per: 'day'
+        spent_per: 'day',
+        dropdownText: "/ Day",
     },
     mounted: function (){
         this.getImage();
@@ -18,7 +19,6 @@ new Vue({
                 this.user = response.data;
             })
         }
-
     },
     methods: {
         getImage: function() {
@@ -43,8 +43,9 @@ new Vue({
                 .then(
                     alert('user information is updated')
                 )
-        }
-
+        },
+        changeDropdown: function (content) {
+            this.dropdownText = content;
+        },
     }
-
-})
+});

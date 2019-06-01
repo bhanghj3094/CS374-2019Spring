@@ -42,8 +42,8 @@
     vertical-align: middle;
     line-height: 50px;
     text-align: center;
-    background-color: #F74C4C;
-    border: #F74C4C;
+    background-color: #f75458;
+    border: #f75458;
     font-family: BigNoodleTitling;
     font-size: 30px;
     background-position: center;
@@ -67,13 +67,13 @@
 }
 
 .btn-secondary:hover {
-    background-color: #F74C4C;
-    border-color: #F74C4C;
+    background-color: #f75458;
+    border-color: #f75458;
 }
 
 .common-btn {
     vertical-align: middle;
-    border: #F74C4C;
+    border: #f75458;
     font-family: Helvetica;
     font-size: 20px;
     top: 50%;
@@ -85,7 +85,7 @@
 }
 
 .btn-red {
-    background-color: #F74C4C;
+    background-color: #f75458;
 }
 
 .btn-white {
@@ -110,7 +110,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     height: 200px;
 }
 

@@ -55,8 +55,12 @@ input::placeholder {
     vertical-align: middle;
     line-height: 50px;
     text-align: center;
-    background-color: #F74C4C;
-    border: #F74C4C;
+    background-color: #f75458;
+    border: #f75458;
     font-family: BigNoodleTitling;
     font-size: 30px;
+}
+
+#next {
+    margin-bottom: 50px;
 }

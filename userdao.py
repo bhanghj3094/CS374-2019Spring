@@ -20,9 +20,10 @@ class UserDao():
 		return user
 
 	def create_user(self, user):
-		user_id = user["user_id"]
-		user_password = user["user_password"]
-		user_email = user["user_email"]
+		id = user["id"]
+		nickname = user['nickname']
+		password = user["password"]
+		user_email = user["email"]
 		dependency = user["dependency"]
 		goal_date = user["goal_date"]
 		spent_money = user["spent_money"]
@@ -32,12 +33,12 @@ class UserDao():
 		mini_goal_3 = user["mini_goal_3"]
 
 		with self.conn.cursor() as cursor:
-			cursor.execute("INSERT INTO user_info(user_id, user_password, user_email, dependency, start_date, goal_date, spent_money, spent_per, mini_goal_1, mini_goal_2, mini_goal_3)"
-						   " VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
-						   (user_id, user_password, user_email, dependency, datetime.datetime.now(), goal_date, spent_money, spent_per, mini_goal_1, mini_goal_2, mini_goal_3))
+			cursor.execute("INSERT INTO user_info(id, nickname, password, email, dependency, start_date, goal_date, spent_money, spent_per, mini_goal_1, mini_goal_2, mini_goal_3)"
+						   " VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+						   (id, nickname, password, user_email, dependency, datetime.datetime.now(), goal_date, spent_money, spent_per, mini_goal_1, mini_goal_2, mini_goal_3))
 
 	def update_user(self, user):
-		user_id = user["user_id"]
+		id = user["id"]
 		goal_date = user["goal_date"]
 		spent_money = user["spent_money"]
 		spent_per = user["spent_per"]
@@ -47,9 +48,9 @@ class UserDao():
 
 		with self.conn.cursor() as cursor:
 			cursor.execute("UPDATE user_info SET goal_date=%s, spent_money=%s, spent_per=%s,"
-						   " mini_goal_1=%s, mini_goal_2=%s, mini_goal_3=%s,"
+						   " mini_goal_1=%s, mini_goal_2=%s, mini_goal_3=%s, "
 						   " update_time=now() WHERE user_id=%s",
-						   (goal_date, spent_money, spent_per, mini_goal_1, mini_goal_2, mini_goal_3, user_id))
+						   (goal_date, spent_money, spent_per, mini_goal_1, mini_goal_2, mini_goal_3, id))
 
 
 

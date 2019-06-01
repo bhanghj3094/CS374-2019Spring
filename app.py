@@ -19,24 +19,29 @@ def get_user(user_id):
 
 @app.route('/send_user_info', methods=['POST'])
 def send_user():
+	temp = {}
+	temp['id'] = request.form['id']
+	temp['nickname'] = request.form['nickname']
+	temp['password'] = request.form['password']
+	temp['email'] = request.form['email']
 
-	return render_template('challenge_set_up.html')
+	return render_template('challenge_set_up.html', user_info=temp, mode='create')
 
 
 @app.route('/create_user')
 def create_user():
 	conn = pool.get_connection()
 	dao = UserDao(conn)
-	user = request.get_json('user_created')
-	create_user(user)
+	user = request.get_json()
+	dao.create_user(user)
 
 
 @app.route('/update_user')
 def update_user():
 	conn = pool.get_connection()
 	dao = UserDao(conn)
-	user = request.get_json('user_updated')
-	create_user(user)
+	user = request.get_json()
+	dao.update_user(user)
 
 
 @app.route('/')

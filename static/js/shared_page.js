@@ -6,8 +6,8 @@ new Vue({
     userid: "HyoungJo", // It is empty at first.
     time_left: "", // It is empty at first.
     print_end_time: "", // It is empty at first.
-    start_time: new Date("2019-05-10T09:00:00"), // It is empty at first.
-    end_time: new Date("2019-06-01T11:00:00"), // It is empty at first.
+    start_time: new Date("2019-05-20T09:00:00"), // It is empty at first.
+    end_time: new Date("2019-06-18T23:59:59"), // It is empty at first.
     complete_percentage: 0,
     image: '',
     report_text: "",
@@ -100,6 +100,7 @@ new Vue({
         this.getCountdown();
         this.moneyCount(start,now);
         var percent = (now - start) / (end - start) * 100;
+        if (percent > 100)percent = 100;
         this.complete_percentage = percent.toFixed(2);
         $("#dynamic")
         .css("width", this.complete_percentage + "%")

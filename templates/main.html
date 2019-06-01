@@ -5,9 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Promiss Cut our Dependencies!</title>
+    <link rel="stylesheet" href="../static/lib/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/main.css" type="text/css">
 </head>
 <body>
+  <div id="main">
     <header>
       <section>
         <div class="header-content">
@@ -22,81 +24,80 @@
             <div id="subtitle">
                Cut off your dependencies!
             </div>
-            <a href="enroll" class="btn-button">START</a>
+            <button id="start" type="button" class="btn common-btn btn-primary"  onclick="location.href='enroll'">START</button>
             <a href="user_home_page" class="btn-log" v-on:click="goToUser"><img src="../static/img/user.png" width="55" height="47"></a>
         </div>
       </section>
     </header>
 
-    <section class="btn-red">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-left">
-                    <div id="section-heading">About Promiss</div>
-                    <hr class="light">
+    <section class="common-btn btn-red">
+      <div class="text-left">
+        <div id="section-heading">About Promiss</div>
+        <hr class="light">
 
-                    <p class="text-faded text-auto1">
-                    Promiss is a web to help users who like SNS and really want to cut off dependency(alcohol, cigarette, or caffeine)<br>in the temporary period.<br> <br>
-                    <b>Function1</b>: You can set up your goal and check how much you have achieved every time.<br>
-                    <b>Function2</b>: You can let your friends know about your goal, and interact with your friends!<br>
-                    <b>Function3</b>: You can play fun games to get a chance for a day off.<br>
-                    <b>Function4</b>: You can gradually have a happier life! <br>
-                    <br> <br>
-                    Check out the <a href="https://github.com/call-me-soo/CS374-2019Spring/blob/master/README.md">developer's note</a> for more information.
-                    </p>
-                    <br>
-                    <p class="text-faded text-center" style="font-size: 20px"> <i>Promiss is in a Beta release.</i> </p>
-                </div>
-            </div>
-        </div>
+        <p class="text-faded text-auto1">
+        Promiss is a web to help users who like SNS and really want to cut off dependency(alcohol, cigarette, or caffeine)<br>in the temporary period.<br> <br>
+        <b>Function1</b>: You can set up your goal and check how much you have achieved every time.<br>
+        <b>Function2</b>: You can let your friends know about your goal, and interact with your friends!<br>
+        <b>Function3</b>: You can play fun games to get a chance for a day off.<br>
+        <b>Function4</b>: You can gradually have a happier life! <br>
+        <br> <br>
+        Check out the <a href="https://github.com/call-me-soo/CS374-2019Spring/blob/master/README.md">developer's note</a> for more information.
+        </p>
+        <br>
+        <p class="text-faded text-center" style="font-size: 20px"> <i>Promiss is in a Beta release.</i> </p>
+      </div>
     </section>
 
-    <section class="btn-white" >
-        <div class="row">
-            <div class="col-lg-4 col-lg-offset-4 text-center">
-                <div id = "section-heading">Numbers of people using Promiss</div>
-                <hr class="light">
-                <div id="numOfUsersSection">
-                    <p class = "usernumber">4</p>
-                </div>
-            </div>
+    <section class="common-btn btn-white" >
+      <div class="text-center">
+        <div id = "section-heading">Numbers of people using Promiss</div>
+        <hr class="light">
+        <div id="textSection">
+        <p class = "usernumber">4</p>
         </div>
+      </div>
     </section>
-    <section class="btn-red">
-        <div class="container text-center">
+    <section class="common-btn btn-red">
+        <div class="text-center">
             <div class="call-to-action">
                 <div id = "section-heading">Source of Promiss</div>
                 <hr>
+                <div id="textSection">
                 <p>Promiss web is an open source. Visit this <a href="https://github.com/call-me-soo/CS374-2019Spring">link</a> for detailed source codes.</p>
+                </div>
                 <br>
-
             </div>
         </div>
     </section>
 
-    <section class="btn-white">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div id= "section-heading">Developers of Promiss:</div>
-                <hr class="light">
-            </div>
+    <section class="common-btn btn-white">
+        <div class="text-center">
+            <div id= "section-heading">Developers of Promiss</div>
+            <hr class="light">
         </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 text-center">
+        <div class="row image">
+            <div class="text-center">
               <img src="../static/img/hyeongshin.jpeg" alt="HyeongShin" style='height: 100px;'/>
             </div>
-            <div class="col-lg-4 col-md-6 text-center">
+            <div class="text-center">
               <img src="../static/img/hyoungjo.jpeg" alt="HyoungJo" style='height: 100px;'/>
             </div>
         </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-6 text-center">
+        <div class="row image">
+          <div class="text-center">
             <img src="../static/img/jinwon.jpeg" alt="Jinwon" style='height: 100px;'/>
           </div>
-          <div class="col-lg-4 col-md-6 text-center">
+          <div class="text-center">
             <img src="../static/img/suyeon.jpeg" alt="Suyeon" style='height: 100px;'/>
           </div>
         </div>
     </section>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="../static/lib/bootstrap.min.js"></script>
+  <script src="../static/lib/vue-2.5.22.js"></script>
+  <script src="../static/js/main.js"></script>
 </body>
 </html>

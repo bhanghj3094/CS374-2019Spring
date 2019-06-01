@@ -251,10 +251,12 @@ img {
 }
 .bettingSideLabel {
   width: 100px;
-  text-align: center;
+  font-weight: bold;
 }
 #betting_dynamic_wrapper {
   width: 475px;
+  height: fit-content;
+  vertical-align: center;
   background-color: white;
 }
 #betting_dynamic {
@@ -263,12 +265,45 @@ img {
   background-color: #f75458;
   text-align: center;
 }
-#bettingFriends {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
+#betting_money_wrapper {
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
 }
+
+#succeed {
+  width:40%;
+  margin-right: 20px;
+  float: left;
+}
+
+#fail {
+  width:40%;
+  margin-left: 20px;
+  float: right;
+}
+#bettingFriends {
+  text-align: center;
+  width: 100%;
+}
+#succeedBettingList {
+  display: inline-block;
+  height: 140px;
+  overflow: scroll;
+  margin-top: 20px;
+  width:40%;
+  float:left;
+}
+
+#failureBettingList {
+  display: inline-block;
+  height: 140px;
+  overflow: scroll;
+  margin-top: 20px;
+  width:40%;
+  float:right;
+}
+
 /* ====== Footer ====== */
 #footer {
   display: flex;

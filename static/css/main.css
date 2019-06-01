@@ -62,7 +62,14 @@
     background-color: #565656;
     border: #565656;
     font-family: BigNoodleTitling;
+    font-weight: bold;
     background-position: center;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #F74C4C;
+    border-color: #F74C4C;
 }
 
 .common-btn {

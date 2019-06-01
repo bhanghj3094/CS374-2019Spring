@@ -125,6 +125,11 @@ input {
     align-self: center;
 }
 
+.btn-check:hover {
+    background-color: #F74C4C !important;
+    border-color: #F74C4C !important;
+}
+
 .first-label {
     position: relative; left: 30px; top: 40px;
 	font-family: BigNoodleTitling;

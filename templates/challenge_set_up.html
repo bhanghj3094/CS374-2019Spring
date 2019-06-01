@@ -24,7 +24,7 @@
     <div id="select_date">
         <p class="first-label">How Long?</p>
         <button id="select_date_button" type="button" data-toggle="modal" data-target="#select_date_modal"
-                class="btn btn-secondary select_button">
+                class="btn btn-secondary select_button btn-check">
           <span id="selected_date">Select Date</span>
           <i id="select_date_button_icon" class="fas fa-external-link-alt"></i></button>
     </div>
@@ -32,7 +32,7 @@
         <p class="first-label">How Much Spent for {{ dependency }}</p>
         <input type="range" class="custom-range" min="0" max="100000" step="100" v-model="spent_money">
         <input id="spent_money" type="number" class="form-control" v-model="spent_money"/>
-        <button id="spent_per_button" class="btn btn-secondary">/ DAY  <i class="fas fa-caret-down"></i></button>
+        <button id="spent_per_button" class="btn btn-secondary btn-check">/ DAY  <i class="fas fa-caret-down"></i></button>
     </div>
 
     <div id="mini_goals">
@@ -52,7 +52,7 @@
         </div>
 
     </div>
-    <p align="center"><button id="create_challenge" class="btn btn-secondary" onclick="location.href='user_home_page'" >Create Challenge</button></p>
+    <p align="center"><button id="create_challenge" class="btn btn-secondary btn-check" onclick="location.href='user_home_page'" >Create Challenge</button></p>
 
   <!--select Dependency Modal-->
   <div id="select_dependency_modal" class="modal fade" tabindex="-1" role="dialog">

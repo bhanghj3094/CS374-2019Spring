@@ -19,6 +19,17 @@ input::placeholder {
     font-size: 15px;
 }
 
+/* ====== Header ====== */
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 #title {
     font-family: BigNoodleTitling;
     font-size: 70px;
@@ -33,6 +44,23 @@ input::placeholder {
     color: #272727;
     text-align: center;
 }
+
+#title, #subtitle > span {
+  color: #f75458;
+}
+#uploadReportImage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#modalUploadButton {
+  margin-left: 10px;
+  font-size: 12px;
+}
+#edit {
+  width: 123px;
+}
+
 
 .first-label {
 	font-family: BigNoodleTitling;

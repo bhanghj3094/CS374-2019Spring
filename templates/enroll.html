@@ -7,13 +7,21 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
-
-<div id="title">
-  <span style="color: #272727">Create</span>
-  <span style="color: #F74C4C"> Challenge</span>
-</div>
-<div id="subtitle">
-  Fill in your Information
+<div id="header">
+  <button type="button" class="btn btn-light" onClick="location.href='main'">
+    <i class="fas fa-home"></i>
+    <span>MAIN PAGE</span>
+  </button>
+  <div>
+    <div id="title">
+      <span style="color: #272727">Create</span>
+      <span style="color: #F74C4C"> Challenge</span>
+    </div>
+    <div id="subtitle">
+      Fill in your Information
+    </div>
+  </div>
+              <a href="user_home_page" class="btn-log" v-on:click="goToUser"><img src="../static/img/user.png" width="47" height="40"></a>
 </div>
 
 <br>

@@ -7,7 +7,7 @@ new Vue({
     time_left: "", // It is empty at first.
     print_end_time: "", // It is empty at first.
     start_time: new Date("2019-05-20T09:00:00"), // It is empty at first.
-    end_time: new Date("2019-06-25T23:59:59"), // It is empty at first.
+    end_time: new Date("2019-06-24T23:59:59"), // It is empty at first.
     complete_percentage: 0,
     image: '',
     report_text: "",

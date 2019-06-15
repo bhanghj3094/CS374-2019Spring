@@ -25,7 +25,7 @@
         <input type="text" placeholder="2019-06-03" id="date">
     </div>
     <div id="how_much_spent">
-        <p class="first-label">How Much Spent for {{ dependency }}</p>
+        <p class="first-label">How Much Spent for {{ selected }}?</p>
         <input type="range" class="custom-range" min="0" max="100000" step="100" v-model="spent_money">
         <input id="spent_money" type="number" class="form-control" v-model="spent_money"/>
         <span id="chooseSharingFeature" class="dropdown">
@@ -43,7 +43,7 @@
     </div>
 
     <div id="mini_goals">
-        <p class="first-label">Save Your Money For?</p>
+        <p class="first-label">Save Your Money For {{ selected }}?</p>
         <p class="second-label">If you cut-off your dependency, then you can buy it! choose your goal.</p>
         <div class="inline">
             <input id="goal_1" class="form-control mini_goal" placeholder="Ex) Trip to Europe"/>

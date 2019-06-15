@@ -3,11 +3,11 @@ new Vue({
   name: "shared_page_vue",
   data: {
     user: {},
-    userid: "HyoungJo", // It is empty at first.
+    userid: "WooSik", // It is empty at first.
     time_left: "", // It is empty at first.
     print_end_time: "", // It is empty at first.
     start_time: new Date("2019-05-20T09:00:00"), // It is empty at first.
-    end_time: new Date("2019-06-08T23:59:59"), // It is empty at first.
+    end_time: new Date("2019-06-25T23:59:59"), // It is empty at first.
     complete_percentage: 0,
     image: '',
     report_text: "",
@@ -174,13 +174,13 @@ new Vue({
         var poke = $('#pokeTable');
         $("#pokeTable").nextAll().remove();
         if (this.pokingList){
-          for (var i = this.pokingList.length - 1 ; i >= 0 ; i--) {
+          for (var i = 0 ; i < this.pokingList.length ; i++) {
             var newRow = $("<tr></tr>");
             var newIndex = $(`<th scope="row">${i+1}</th>`);
             var newNumber = $(`<td>${this.pokingList[i]['numberOfPoking']}</td>`);
             var newName = $(`<td>${this.pokingList[i]['pokingFriendName']}</td>`);
             newRow.append([newIndex, newNumber, newName]);
-            newRow.insertAfter(poke);
+            newRow.appendTo(poke);
           }
         }
     },
@@ -208,21 +208,21 @@ new Vue({
         var fb = $('#failureBet');
         $("#failureBet").nextAll().remove();
         if (this.succeedBettingList){
-          for (var i = this.succeedBettingList.length - 1 ; i >= 0 ; i--) {
+          for (var i = 0 ; i < this.succeedBettingList.length ; i++) {
             var newRow = $("<tr></tr>");
             var newNumber = $(`<td>${'₩'+ this.numberWithCommas(this.succeedBettingList[i]['bettingAmount'])}</td>`);
             var newName = $(`<td>${this.succeedBettingList[i]['bettingFriendName']}</td>`);
             newRow.append([newNumber, newName]);
-            newRow.insertAfter(sb);
+            newRow.appendTo(sb);
           }
         }
         if (this.failureBettingList){
-          for (var i = this.failureBettingList.length - 1 ; i >= 0 ; i--) {
+          for (var i = 0 ; i < this.failureBettingList.length ; i++) {
             var newRow = $("<tr></tr>");
             var newNumber = $(`<td>${'₩'+ this.numberWithCommas(this.failureBettingList[i]['bettingAmount'])}</td>`);
             var newName = $(`<td>${this.failureBettingList[i]['bettingFriendName']}</td>`);
             newRow.append([newNumber, newName]);
-            newRow.insertAfter(fb);
+            newRow.appendTo(fb);
           }
         }
     },

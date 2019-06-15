@@ -60,22 +60,22 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="form_password"><i class="fas fa-lock"></i></span>
         </div>
-        <input type="text" class="form-control" name="password" v-model="user.password" placeholder="Do not use password that you commonly used." aria-label="form_password" aria-describedby="form_password">
+        <input type="password" class="form-control" name="password" v-model="user.password" placeholder="Do not use password that you commonly used." aria-label="form_password" aria-describedby="form_password">
       </div>
       <br>
 
-      <label class="first-label" for="form_password_verify">
+      <label type="password" class="first-label" for="form_password_verify">
         Re-Type Password
       </label>
       <br>
-      <label class="second-label" for="form_password_verify">
+      <label type="password" class="second-label" for="form_password_verify">
         For password verification.
       </label>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="form_password_verify"><i class="fas fa-lock"></i></span>
         </div>
-        <input type="text" class="form-control" v-model="user.password_verify" placeholder="type password that you wrote at upper form." aria-label="form_verify_password" aria-describedby="form_verify_password">
+        <input type="password" class="form-control" v-model="user.password_verify" placeholder="type password that you wrote at upper form." aria-label="form_verify_password" aria-describedby="form_verify_password">
       </div>
       <br>
 

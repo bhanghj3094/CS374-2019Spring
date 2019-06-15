@@ -5,7 +5,7 @@ new Vue({
   name: "user_home_page_vue",
   data: {
     user: {},
-    userid: "HyoungJo", // It is empty at first.
+    userid: "WooSik", // It is empty at first.
     postUrl: "http://54.180.181.191:5000/shared_page",
     postText: [
       { 'theme': 'None', 'message': 'Check your '+this.userid+' challenge'},
@@ -18,12 +18,12 @@ new Vue({
     print_time_left: "", // It is empty at first.
     print_end_time: "", // It is empty at first.
     start_time: new Date("2019-05-20T09:00:00"), // It is empty at first.
-    end_time: new Date("2019-06-08T23:59:59"), // It is empty at first.
+    end_time: new Date("2019-06-24T23:59:59"), // It is empty at first.
     complete_percentage: 0,
     dropdownText: "None", // It needs to share on SNS
     user_goals: [],
     goals: [
-      {'name': 'iPad', 'money': 1000000},
+      {'name': 'iPad', 'money': 800000},
       {'name': 'Americano', 'money': 5000},
       {'name': 'Paris Trip', 'money': 4000000},
     ], // It is empty at first.

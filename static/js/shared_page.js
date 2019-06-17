@@ -171,8 +171,8 @@ new Vue({
       alert("Message Successfully Sent!");
     },
     pokeView: function() {
-        var poke = $('#pokeTable');
-        $("#pokeTable").nextAll().remove();
+        $('#pokeTable tr').remove();
+            var poke = $('#pokeTable');
         if (this.pokingList){
           for (var i = 0 ; i < this.pokingList.length ; i++) {
             var newRow = $("<tr></tr>");
@@ -203,10 +203,10 @@ new Vue({
       alert("You Poked Your Friend!");
     },
     betView: function() {
+        $('#succeedBet tr').remove();
         var sb = $('#succeedBet');
-        $("#succeedBet").nextAll().remove();
+        $('#failureBet tr').remove();
         var fb = $('#failureBet');
-        $("#failureBet").nextAll().remove();
         if (this.succeedBettingList){
           for (var i = 0 ; i < this.succeedBettingList.length ; i++) {
             var newRow = $("<tr></tr>");
